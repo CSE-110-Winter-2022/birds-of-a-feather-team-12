@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Team12BOF</string>
+    <string name="add_class_title">Add Class</string>
+    
+    <string-array name="years">
+        <item>2022</item>
+        <item>2021</item>
+        <item>2020</item>
+        <item>2019</item>
+        <item>2018</item>
+        <item>2017</item>
+        <item>2016</item>
+        <item>2015</item>
+    </string-array>
+    <string-array name="quarters">
+        <item>Fall</item>
+        <item>Winter</item>
+        <item>Spring</item>
+        <item>Summer Session I</item>
+        <item>Summer Session II</item>
+        <item>Special Summer Session</item>
+
+    </string-array>
 </resources>
