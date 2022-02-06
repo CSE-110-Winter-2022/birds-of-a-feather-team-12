@@ -40,6 +40,25 @@ public class Course {
 
     }
 
+    public int getCourseId(){
+        return courseId;
+    }
+    public int getStudentId(){
+        return studentId;
+    }
+    public String getCourseNumber(){
+        return course_number;
+    }
+    public String getSubject(){
+        return subject;
+    }
+    public String getYear(){
+        return year;
+    }
+    public String getQuarter(){
+        return quarter;
+    }
+
 
 
 }
