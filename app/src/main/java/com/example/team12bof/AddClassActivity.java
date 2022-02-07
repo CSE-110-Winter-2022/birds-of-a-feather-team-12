@@ -18,10 +18,25 @@ import com.example.team12bof.db.StudentWithCourses;
 
 import org.w3c.dom.Text;
 
+/**
+ * This class is designed to add new Course based on course ID and course field
+ * and also show the previous entry
+ */
 public class AddClassActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private int num_courses;
     private DummyStudent user;
+
+    /**
+     *
+     * @param savedInstanceState
+     */
+
+    /**
+     * This method is designed to set the course number, course field
+     * the year and the quarter
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,12 +66,22 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
         quarter.setSelection(quarterrr);
     }
 
+    /**
+     * This method controls what is inserted to save it
+     */
     @Override
     protected void onDestroy(){
         super.onDestroy();
         saveProfile();
     }
 
+    /**
+     * This method is designed to show the selected item
+     * @param adapterView
+     * @param view
+     * @param i
+     * @param l
+     */
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String text = adapterView.getItemAtPosition(i).toString();
@@ -68,6 +93,9 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
 
     }
 
+    /**
+     * This method is designed to load the entry that was inserted previously
+     */
     public void loadProfile(){
 
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
@@ -80,6 +108,10 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
 
     }
 
+    /**
+     * This method is designed to save the information of the
+     * intended course that we insert
+     */
     public void saveProfile(){
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
@@ -97,6 +129,12 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
         editor.apply();
     }
 
+    /**
+     * This method is control the entry after pushing
+     * enter button. If the insert information is valid, it shows them
+     * If it's not valid, it sends the invalid message
+     * @param view
+     */
     public void onEnterClicked(View view) {
 
 
@@ -118,12 +156,22 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
         }
     }
 
+    /**
+     * this method return whether the course number we
+     * inserted is empty or not
+     * @return
+     */
     public boolean hasNum() {
         TextView numView = this.findViewById(R.id.number);
 
         return !TextUtils.isEmpty(numView.getText().toString());
     }
 
+    /**
+     * this method return whether the course number we
+     * inserted is empty or not
+     * @return
+     */
     public boolean hasSubject() {
         TextView subjectView = this.findViewById(R.id.subject);
 
