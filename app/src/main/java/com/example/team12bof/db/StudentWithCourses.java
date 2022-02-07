@@ -10,7 +10,9 @@ import com.example.team12bof.IStudent;
 import java.util.List;
 
 
-
+/**
+ * This is the class to get the courses of the student and the student name
+ */
 public class StudentWithCourses implements IStudent {
     @Embedded
     public Student student;
@@ -21,15 +23,27 @@ public class StudentWithCourses implements IStudent {
             projection = {"id"})
     public List<Course> courses;
 
-
+    /**
+     * This methid will get the student name
+     * @return student.name
+     */
     @Override
     public String getName() {
         return this.student.name;
     }
+
+    /**
+     * This methid will get the list of the courses
+     * @return courses
+     */
     @Override
     public List<Course> getCourses() {
         return this.courses;
     }
+    /**
+     * This methid will get the student id
+     * @return student.studentId
+     */
     @Override
     public int getId() {
         return this.student.studentId;

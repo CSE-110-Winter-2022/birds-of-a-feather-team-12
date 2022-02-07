@@ -10,6 +10,10 @@ import java.util.Arrays;
 import java.util.List;
 
 // this is like "Person" in lab 5
+
+/**
+ * This class is to get students information like name and ID
+ */
 @Entity(tableName = "students")
 public class Student {
 

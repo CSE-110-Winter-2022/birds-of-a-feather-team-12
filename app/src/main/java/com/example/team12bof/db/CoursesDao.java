@@ -8,6 +8,10 @@ import androidx.room.Transaction;
 
 import java.util.List;
 
+/**
+ * This is the interface dao to use the database
+ * from the Course class
+ */
 @Dao
 public interface CoursesDao {
     @Transaction
