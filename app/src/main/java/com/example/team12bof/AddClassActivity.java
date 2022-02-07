@@ -68,8 +68,8 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
     public void loadProfile(){
 
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-        String courseNum = preferences.getString("Course Number","Course Number");
-        String courseSub = preferences.getString("Course Subject", "Course Subject");
+        String courseNum = preferences.getString("Course Number","");
+        String courseSub = preferences.getString("Course Subject", "");
         TextView nnn = findViewById(R.id.number);
         TextView sss = findViewById(R.id.subject);
         nnn.setText(courseNum);
