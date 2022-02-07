@@ -2,6 +2,7 @@ package com.example.team12bof;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,6 +23,7 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_class);
+        loadProfile();
         setTitle(R.string.add_class_title);
 
         user = new DummyStudent(0,"user");
@@ -38,6 +40,18 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
         adapter_quarter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         quarter.setAdapter(adapter_quarter);
         quarter.setOnItemSelectedListener(this);
+
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        int year = preferences.getInt("Year", 0);
+        school_year.setSelection(year);
+        int quarterrr = preferences.getInt("Quarter", 0);
+        quarter.setSelection(quarterrr);
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        saveProfile();
     }
 
     @Override
@@ -51,7 +65,38 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
 
     }
 
+    public void loadProfile(){
+
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        String courseNum = preferences.getString("Course Number","Course Number");
+        String courseSub = preferences.getString("Course Subject", "Course Subject");
+        TextView nnn = findViewById(R.id.number);
+        TextView sss = findViewById(R.id.subject);
+        nnn.setText(courseNum);
+        sss.setText(courseSub);
+
+    }
+
+    public void saveProfile(){
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        TextView nnn = findViewById(R.id.number);
+        editor.putString("Course Number", nnn.getText().toString());
+
+        TextView sss = findViewById(R.id.subject);
+        editor.putString("Course Subject", sss.getText().toString());
+
+        Spinner school_year = findViewById(R.id.school_year);
+        Spinner quarter = findViewById(R.id.quarter);
+        editor.putInt("Year", school_year.getSelectedItemPosition());
+        editor.putInt("Quarter", quarter.getSelectedItemPosition());
+        editor.apply();
+    }
+
     public void onEnterClicked(View view) {
+
+
         TextView subject = findViewById(R.id.subject);
         TextView courseNumber = findViewById(R.id.number);
         Spinner school_year = findViewById(R.id.school_year);
@@ -60,13 +105,12 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
             Utilities.showAlert(this, "Invalid Entry");
 
 
+
         }
         else {
             Course course = new Course(num_courses,user.getId(),courseNumber.getText().toString(),subject.getText().toString(),school_year.getSelectedItem().toString(),quarter.getSelectedItem().toString());
             user.addCourse(course);
             num_courses++;
-            subject.setText("");
-            courseNumber.setText("");
 
         }
 
