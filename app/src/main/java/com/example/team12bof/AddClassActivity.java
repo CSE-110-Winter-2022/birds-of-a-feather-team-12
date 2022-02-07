@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 import com.example.team12bof.db.AppDatabase;
 import com.example.team12bof.db.Course;
 import com.example.team12bof.db.StudentWithCourses;
+
+import org.w3c.dom.Text;
 
 public class AddClassActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -113,7 +116,17 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
             num_courses++;
 
         }
+    }
 
+    public boolean hasNum() {
+        TextView numView = this.findViewById(R.id.number);
 
+        return !TextUtils.isEmpty(numView.getText().toString());
+    }
+
+    public boolean hasSubject() {
+        TextView subjectView = this.findViewById(R.id.subject);
+
+        return !TextUtils.isEmpty(subjectView.getText());
     }
 }
