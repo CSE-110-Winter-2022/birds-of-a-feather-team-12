@@ -26,9 +26,13 @@ public class CoursesViewAdapter extends RecyclerView.Adapter<CoursesViewAdapter.
         View view = LayoutInflater
                 .from(parent.getContext())
                 .inflate(R.layout.courses_row, parent, false);
-        // NOTE: courses_row has not been implemented yet
 
         return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.setCourse(courses.get(position));
     }
 
     @Override
@@ -43,15 +47,11 @@ public class CoursesViewAdapter extends RecyclerView.Adapter<CoursesViewAdapter.
         ViewHolder(View itemView) {
             super(itemView);
             this.courseTextView = itemView.findViewById(R.id.courses_row_text);
-            // courses_row_text not implemented yet
         }
 
         public void setCourse(Course course) {
             this.course = course;
 
-            // text has not been created in the Course class
-            // consider text to be: subject + " " + courseNumber + " " + quarter + " " + year
-            // ex: "CSE 110 Winter 2022"
             this.courseTextView.setText(course.text);
         }
     }

@@ -1,8 +1,6 @@
 package com.example.team12bof.db;
 
 import androidx.room.Embedded;
-import androidx.room.Embedded;
-import androidx.room.Query;
 import androidx.room.Relation;
 
 import com.example.team12bof.IStudent;
@@ -13,7 +11,7 @@ import java.util.List;
 /**
  * This is the class to get the courses of the student and the student name
  */
-public class StudentWithCourses implements IStudent {
+public class StudentWithCourses extends IStudent {
     @Embedded
     public Student student;
 
@@ -44,7 +42,6 @@ public class StudentWithCourses implements IStudent {
      * This methid will get the student id
      * @return student.studentId
      */
-    @Override
     public int getId() {
         return this.student.studentId;
     }

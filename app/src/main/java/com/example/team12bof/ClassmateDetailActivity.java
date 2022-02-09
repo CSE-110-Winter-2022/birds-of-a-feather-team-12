@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import com.example.team12bof.db.AppDatabase;
 
+import java.util.List;
+
 public class ClassmateDetailActivity extends AppCompatActivity {
-    private AppDatabase db;
-    private IStudent classmate;
 
     private RecyclerView coursesRecyclerView;
     private RecyclerView.LayoutManager coursesLayoutManager;
@@ -23,17 +23,18 @@ public class ClassmateDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classmate_detail);
 
+        TextView classmateDetails = findViewById(R.id.courses_view);
+
         Intent intent = getIntent();
         int classmateId = intent.getIntExtra("classmate_id", 0);
 
-        db = AppDatabase.singleton(this);
-        classmate = db.studentWithCoursesDao().getAll();
+        AppDatabase db = AppDatabase.singleton(this);
+        IStudent classmate = db.studentsWithCoursesDao().get(classmateId);
 
-        String classmateName = intent.getStringExtra("classmate_name");
-        String[] classmateCourses = intent.getStringArrayExtra("classmate_courses");
+        setTitle(classmate.getName());
 
-        setTitle(classmateName);
-        classmateDetails.setText(String.join("\n", classmateCourses));
+        // TODO: change getCourses() method?
+        classmateDetails.setText(String.join("\n", classmate.getCourses().toArray(new String[0])));
     }
 
 

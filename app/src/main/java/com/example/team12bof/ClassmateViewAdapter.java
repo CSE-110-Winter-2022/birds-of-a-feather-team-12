@@ -62,7 +62,7 @@ public class ClassmateViewAdapter extends RecyclerView.Adapter<ClassmateViewAdap
             Context context = view.getContext();
             Intent intent = new Intent(context, ClassmateDetailActivity.class);
             intent.putExtra("classmate_name", this.classmate.getName());
-            intent.putExtra("classmate_courses", this.classmate.getCourses().toArray(new String[0]));
+            //intent.putExtra("classmate_courses", this.classmate.getCourses().toArray(new String[0]));
             context.startActivity(intent);
         }
     }

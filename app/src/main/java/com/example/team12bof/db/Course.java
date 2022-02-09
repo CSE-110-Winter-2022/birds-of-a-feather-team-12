@@ -42,6 +42,9 @@ public class Course {
     @ColumnInfo(name = "quarter")
     public String quarter;
 
+    @ColumnInfo(name = "text")
+    public String text;
+
 
     /**
      * This is the constructor to initialize all the above variables
@@ -60,7 +63,7 @@ public class Course {
         this.subject=subject;
         this.year=year;
         this.quarter=quarter;
-
+        this.text = subject + " " + course_number + " " + quarter + " " + year; // ex: "CSE 110 Winter 2022"
     }
 
     /**

@@ -8,8 +8,7 @@ import java.util.List;
  * This is the interface that we implement its methods
  * in other classes
  */
-public interface IStudent {
-    int getId();
-    String getName();
-    List<Course> getCourses();
+public abstract class IStudent {
+    public abstract String getName();
+    public abstract List<Course> getCourses();
 }
