@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Team12BOF">
         <activity
+            android:name=".ClassmateActivity"
+            android:exported="false" />
+        <activity
             android:name=".ClassmateDetailActivity"
             android:exported="false" />
         <activity

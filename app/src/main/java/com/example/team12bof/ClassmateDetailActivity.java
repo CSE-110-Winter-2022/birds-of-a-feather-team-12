@@ -33,7 +33,6 @@ public class ClassmateDetailActivity extends AppCompatActivity {
 
         setTitle(classmate.getName());
 
-        // TODO: change getCourses() method?
         classmateDetails.setText(String.join("\n", classmate.getCourses().toArray(new String[0])));
     }
 

@@ -2,6 +2,7 @@ package com.example.team12bof;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -137,22 +138,22 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
      */
     public void onEnterClicked(View view) {
 
-
         TextView subject = findViewById(R.id.subject);
         TextView courseNumber = findViewById(R.id.number);
         Spinner school_year = findViewById(R.id.school_year);
         Spinner quarter = findViewById(R.id.quarter);
         if(subject.getText().toString().equals("") ||courseNumber.getText().toString().equals("")){
             Utilities.showAlert(this, "Invalid Entry");
-
-
-
         }
         else {
-            Course course = new Course(num_courses,user.getId(),courseNumber.getText().toString(),subject.getText().toString(),school_year.getSelectedItem().toString(),quarter.getSelectedItem().toString());
+            Course course = new Course(num_courses,user.getId(),
+                    courseNumber.getText().toString(),
+                    subject.getText().toString(),
+                    school_year.getSelectedItem().toString(),
+                    quarter.getSelectedItem().toString());
             user.addCourse(course);
             num_courses++;
-
+            Toast.makeText(AddClassActivity.this,"Course added", Toast.LENGTH_SHORT);
         }
     }
 
@@ -176,5 +177,11 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
         TextView subjectView = this.findViewById(R.id.subject);
 
         return !TextUtils.isEmpty(subjectView.getText());
+    }
+
+    public void onDoneButtonClicked(View view) {
+        saveProfile();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
