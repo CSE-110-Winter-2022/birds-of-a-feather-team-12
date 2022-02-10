@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * This class is the main activity class that has method
@@ -35,8 +38,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onStartClicked(View view) {
-        Intent intent = new Intent(this, ClassmateActivity.class);
-        startActivity(intent);
+
+        Intent intent1 = new Intent(MainActivity.this, DemoService.class);
+        startService(intent1);
+        ProgressBar myBar = findViewById(R.id.progressBar);
+        myBar.setVisibility(View.VISIBLE);
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+
+                Intent intent = new Intent(MainActivity.this, ClassmateActivity.class);
+                startActivity(intent);
+            }
+        }, 2000);
+
+
 
 
 

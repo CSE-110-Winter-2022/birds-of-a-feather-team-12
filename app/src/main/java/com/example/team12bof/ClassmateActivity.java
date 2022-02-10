@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.team12bof.db.AppDatabase;
 import com.example.team12bof.db.Course;
@@ -43,5 +45,12 @@ public class ClassmateActivity extends AppCompatActivity {
         classmateViewAdapter = new ClassmateViewAdapter(classmates);
         classmatesRecyclerView.setAdapter(classmateViewAdapter);
 
+    }
+
+    public void onStopClicked(View view){
+        Intent myIntent = new Intent(this, DemoService.class);
+        stopService(myIntent);
+        Intent intent = new Intent(this,MainActivity.class );
+        startActivity(intent);
     }
 }
