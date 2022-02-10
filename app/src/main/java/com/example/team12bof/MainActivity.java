@@ -38,11 +38,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onStartClicked(View view) {
+        ProgressBar myBar = findViewById(R.id.progressBar);
+        myBar.setVisibility(View.VISIBLE);
 
         Intent intent1 = new Intent(MainActivity.this, DemoService.class);
         startService(intent1);
-        ProgressBar myBar = findViewById(R.id.progressBar);
-        myBar.setVisibility(View.VISIBLE);
+
 
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
