@@ -47,11 +47,10 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
         setContentView(R.layout.activity_add_class);
         loadProfile();
         setTitle(R.string.add_class_title);
-        me = new Student("Me");
-        me.setStudentId(3);
+
         db = AppDatabase.singleton(getApplicationContext());
-        db.studentDao().insert(me);
-        user = new DummyStudent(0,"user");
+
+        user = new DummyStudent(4,"user");
         num_courses =0;
 
         Spinner school_year = findViewById(R.id.school_year);
@@ -152,14 +151,14 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
             Utilities.showAlert(this, "Invalid Entry");
         }
         else {
-            Course course = new Course(me.getStudentId(),
+            Course course = new Course(user.getId(),
                     courseNumber.getText().toString(),
                     subject.getText().toString(),
                     school_year.getSelectedItem().toString(),
                     quarter.getSelectedItem().toString());
             num_courses++;
             user.addCourse(course);
-            db.coursesDao().insert(course);
+
             Toast.makeText(AddClassActivity.this,"Course added", Toast.LENGTH_SHORT);
         }
     }
