@@ -10,12 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.team12bof.db.Course;
+import com.example.team12bof.db.Student;
+
 import java.util.List;
 
 public class ClassmateViewAdapter extends RecyclerView.Adapter<ClassmateViewAdapter.ViewHolder> {
-    private final List<? extends IStudent> classmates;
+    private final List<? extends Student> classmates;
 
-    public ClassmateViewAdapter(List<? extends IStudent> classmates) {
+    public ClassmateViewAdapter(List<? extends Student> classmates) {
         super();
         this.classmates = classmates;
     }
@@ -44,7 +47,7 @@ public class ClassmateViewAdapter extends RecyclerView.Adapter<ClassmateViewAdap
             extends RecyclerView.ViewHolder
             implements View.OnClickListener {
         private final TextView classmateNameView;
-        private IStudent classmate;
+        private Student classmate;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -52,7 +55,7 @@ public class ClassmateViewAdapter extends RecyclerView.Adapter<ClassmateViewAdap
             itemView.setOnClickListener(this);
         }
 
-        public void setClassmate(IStudent classmate) {
+        public void setClassmate(Student classmate) {
             this.classmate = classmate;
             this.classmateNameView.setText(classmate.getName());
         }
@@ -61,8 +64,8 @@ public class ClassmateViewAdapter extends RecyclerView.Adapter<ClassmateViewAdap
         public void onClick(View view) {
             Context context = view.getContext();
             Intent intent = new Intent(context, ClassmateDetailActivity.class);
-            intent.putExtra("classmate_name", this.classmate.getName());
-            intent.putExtra("classmate_courses", this.classmate.getCourses().toArray(new String[0]));
+            intent.putExtra("classmate_id", this.classmate.getStudentId());
+
             context.startActivity(intent);
         }
     }

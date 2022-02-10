@@ -19,10 +19,30 @@ public class Student {
 
 
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    public int studentId;
+    public int studentId=0;
 
     @ColumnInfo(name="name")
     public String name;
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

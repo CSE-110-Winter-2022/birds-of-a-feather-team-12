@@ -26,5 +26,7 @@ public interface CoursesDao {
 
     @Insert
     void insert(Course course);
+    @Delete
+    void delete(Course course);
 
 }

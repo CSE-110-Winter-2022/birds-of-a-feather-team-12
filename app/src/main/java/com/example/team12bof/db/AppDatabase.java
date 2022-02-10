@@ -24,6 +24,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase singleton(Context context) {
         if (singletonInstance ==null) {
             singletonInstance = Room.databaseBuilder(context, AppDatabase.class, "students.db")
+                    .createFromAsset("starter-students.db")
                     .allowMainThreadQueries()
                     .build();
         }
@@ -35,7 +36,7 @@ public abstract class AppDatabase extends RoomDatabase {
      * (A course for the student dao to check it)
      * @return StudentWithCoursesDao
      */
-    public abstract StudentWithCoursesDao studentsWithCoursesDao();
+    public abstract StudentDao studentDao();
 
     /**
      * This method will return a Dao test for the Course class

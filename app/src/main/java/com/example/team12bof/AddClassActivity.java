@@ -15,7 +15,8 @@ import android.widget.Toast;
 
 import com.example.team12bof.db.AppDatabase;
 import com.example.team12bof.db.Course;
-import com.example.team12bof.db.StudentWithCourses;
+import com.example.team12bof.db.Student;
+
 
 import org.w3c.dom.Text;
 
@@ -27,6 +28,8 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
 
     private int num_courses;
     private DummyStudent user;
+    private Student me;
+    private AppDatabase db;
 
     /**
      *
@@ -44,7 +47,10 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
         setContentView(R.layout.activity_add_class);
         loadProfile();
         setTitle(R.string.add_class_title);
-
+        me = new Student("Me");
+        me.setStudentId(3);
+        db = AppDatabase.singleton(getApplicationContext());
+        db.studentDao().insert(me);
         user = new DummyStudent(0,"user");
         num_courses =0;
 
@@ -146,13 +152,14 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
             Utilities.showAlert(this, "Invalid Entry");
         }
         else {
-            Course course = new Course(num_courses,user.getId(),
+            Course course = new Course(me.getStudentId(),
                     courseNumber.getText().toString(),
                     subject.getText().toString(),
                     school_year.getSelectedItem().toString(),
                     quarter.getSelectedItem().toString());
-            user.addCourse(course);
             num_courses++;
+            user.addCourse(course);
+            db.coursesDao().insert(course);
             Toast.makeText(AddClassActivity.this,"Course added", Toast.LENGTH_SHORT);
         }
     }

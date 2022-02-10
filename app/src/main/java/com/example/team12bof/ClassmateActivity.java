@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.team12bof.db.AppDatabase;
+import com.example.team12bof.db.Course;
+import com.example.team12bof.db.Student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,16 +24,15 @@ public class ClassmateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_classmate);
         setTitle("List of BoFs");
 
-        AppDatabase db = AppDatabase.singleton(getApplicationContext());
-        List<? extends IStudent> classmates = db.studentsWithCoursesDao().getAll();
 
-        List<DummyStudent> students = new ArrayList<DummyStudent>();
-        students.add(new DummyStudent(0, "Jeannelle Balilo"));
-        students.add(new DummyStudent(1,"Alejandro Lobo"));
-        students.add(new DummyStudent(2,"Lingyu Chen"));
-        students.add(new DummyStudent(3,"Ava Hamedi"));
-        students.add(new DummyStudent(4,"Saman Zarei"));
-        students.add(new DummyStudent(5,"Jinming Zhang"));
+
+        AppDatabase db = AppDatabase.singleton(getApplicationContext());
+
+
+
+
+        List<? extends Student> classmates = db.studentDao().getAll();
+
 
         // TODO:
         classmatesRecyclerView = findViewById(R.id.classmates_view);
@@ -39,7 +40,7 @@ public class ClassmateActivity extends AppCompatActivity {
         classmatesLayoutManager = new LinearLayoutManager(this);
         classmatesRecyclerView.setLayoutManager(classmatesLayoutManager);
 
-        classmateViewAdapter = new ClassmateViewAdapter(students);
+        classmateViewAdapter = new ClassmateViewAdapter(classmates);
         classmatesRecyclerView.setAdapter(classmateViewAdapter);
 
     }
