@@ -10,6 +10,23 @@
         android:id="@+id/classmates_view"
         android:layout_width="396dp"
         android:layout_height="463dp"
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="30dp" />
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="105dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onStopClicked"
+        android:text="Stop"
+        app:layout_constraintBottom_toTopOf="@+id/classmates_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.704" />
 </androidx.constraintlayout.widget.ConstraintLayout>
