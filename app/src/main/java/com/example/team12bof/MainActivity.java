@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * This class is the main activity class that has method
@@ -16,6 +19,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     /**
      * This method is used when an activity is created
+     *
      * @param savedInstanceState
      */
     @Override
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method is designed to move to another activity(AddClassActivity)
      * When the Add Class button is pushed.
+     *
      * @param view
      */
     public void onAddClassClicked(View view) {
@@ -35,10 +40,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onStartClicked(View view) {
-        Intent intent = new Intent(this, ClassmateActivity.class);
-        startActivity(intent);
+        Intent intent = new Intent(MainActivity.this, DemoService.class);
+        startService(intent);
+        ProgressBar myBar = findViewById(R.id.progressBar);
+        myBar.setVisibility(View.VISIBLE);
 
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
 
-
+                Intent myIntent = new Intent(MainActivity.this, ClassmateActivity.class);
+                startActivity(myIntent);
+            }
+        }, 2000);
     }
 }
