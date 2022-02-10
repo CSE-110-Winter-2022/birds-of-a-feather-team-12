@@ -11,7 +11,7 @@ import java.util.List;
  * the student has taken  before based on the course number and
  * field. And it adds them to the courseList
  */
-public class DummyStudent implements IStudent {
+public class DummyStudent extends IStudent {
     private final int id;
     private final String name;
     private final List<Course> courses;
@@ -34,7 +34,6 @@ public class DummyStudent implements IStudent {
      * This is the method that return the course number
      * @return id
      */
-    @Override
     public int getId() {return id;}
 
     /**

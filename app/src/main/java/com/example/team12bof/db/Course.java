@@ -16,7 +16,7 @@ public class Course {
     /**
      * points to the ID
      */
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     public int courseId;
 
@@ -42,25 +42,26 @@ public class Course {
     @ColumnInfo(name = "quarter")
     public String quarter;
 
+    @ColumnInfo(name = "text")
+    public String text;
+
 
     /**
      * This is the constructor to initialize all the above variables
-     * That we explained about them
-     * @param courseId
      * @param studentId
      * @param course_number
      * @param subject
      * @param year
      * @param quarter
      */
-    public Course(int courseId, int studentId, String course_number, String subject, String year, String quarter){
+    public Course(int studentId, String course_number, String subject, String year, String quarter){
         this.courseId=courseId;
         this.studentId=studentId;
         this.course_number=course_number;
         this.subject=subject;
         this.year=year;
         this.quarter=quarter;
-
+        this.text = subject + " " + course_number + " " + quarter + " " + year; // ex: "CSE 110 Winter 2022"
     }
 
     /**

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Team12BOF</string>
     <string name="add_class_title">Add Class</string>
-    
+
     <string-array name="years">
         <item>2022</item>
         <item>2021</item>

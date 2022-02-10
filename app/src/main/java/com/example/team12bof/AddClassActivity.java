@@ -2,6 +2,7 @@ package com.example.team12bof;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,7 +15,8 @@ import android.widget.Toast;
 
 import com.example.team12bof.db.AppDatabase;
 import com.example.team12bof.db.Course;
-import com.example.team12bof.db.StudentWithCourses;
+import com.example.team12bof.db.Student;
+
 
 import org.w3c.dom.Text;
 
@@ -26,7 +28,9 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
 
     private int num_courses;
     private DummyStudent user;
-
+    private Student me;
+    private AppDatabase db;
+//
     /**
      *
      * @param savedInstanceState
@@ -44,7 +48,9 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
         loadProfile();
         setTitle(R.string.add_class_title);
 
-        user = new DummyStudent(0,"user");
+        db = AppDatabase.singleton(getApplicationContext());
+
+        user = new DummyStudent(4,"user");
         num_courses =0;
 
         Spinner school_year = findViewById(R.id.school_year);
@@ -137,22 +143,23 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
      */
     public void onEnterClicked(View view) {
 
-
         TextView subject = findViewById(R.id.subject);
         TextView courseNumber = findViewById(R.id.number);
         Spinner school_year = findViewById(R.id.school_year);
         Spinner quarter = findViewById(R.id.quarter);
         if(subject.getText().toString().equals("") ||courseNumber.getText().toString().equals("")){
             Utilities.showAlert(this, "Invalid Entry");
-
-
-
         }
         else {
-            Course course = new Course(num_courses,user.getId(),courseNumber.getText().toString(),subject.getText().toString(),school_year.getSelectedItem().toString(),quarter.getSelectedItem().toString());
-            user.addCourse(course);
+            Course course = new Course(user.getId(),
+                    courseNumber.getText().toString(),
+                    subject.getText().toString(),
+                    school_year.getSelectedItem().toString(),
+                    quarter.getSelectedItem().toString());
             num_courses++;
+            user.addCourse(course);
 
+            Toast.makeText(AddClassActivity.this,"Course added", Toast.LENGTH_SHORT);
         }
     }
 
@@ -176,5 +183,11 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
         TextView subjectView = this.findViewById(R.id.subject);
 
         return !TextUtils.isEmpty(subjectView.getText());
+    }
+
+    public void onDoneButtonClicked(View view) {
+        saveProfile();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
