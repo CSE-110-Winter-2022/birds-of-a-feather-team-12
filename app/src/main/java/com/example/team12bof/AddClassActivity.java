@@ -30,7 +30,7 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
     private DummyStudent user;
     private Student me;
     private AppDatabase db;
-
+//
     /**
      *
      * @param savedInstanceState
