@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< Updated upstream
+=======
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_classmate.xml" value="0.1" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_classmate_detail.xml" value="0.1" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/classmate_row.xml" value="0.1" />
+>>>>>>> Stashed changes
         <entry key="..\:/Users/aleja/AndroidStudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/activity_add_class.xml" value="0.13645833333333332" />
         <entry key="..\:/Users/aleja/AndroidStudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/activity_main.xml" value="0.13858695652173914" />
         <entry key="..\:/Users/aleja/AndroidStudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/activity_some_class.xml" value="0.13645833333333332" />

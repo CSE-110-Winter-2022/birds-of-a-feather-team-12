@@ -23,14 +23,24 @@ public class DemoService extends Service {
 
 
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     }
 
     @Override
     public void onDestroy() {
         Toast.makeText(DemoService.this, "Service Stopped",Toast.LENGTH_SHORT).show();
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         super.onDestroy();
     }
 }
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
