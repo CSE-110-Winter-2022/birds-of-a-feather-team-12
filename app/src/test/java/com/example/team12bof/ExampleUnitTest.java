@@ -1,9 +1,15 @@
 package com.example.team12bof;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import static org.junit.Assert.*;
+
+import androidx.lifecycle.Lifecycle;
+import androidx.test.core.app.ActivityScenario;
 
 import com.example.team12bof.db.Course;
 
@@ -13,7 +19,10 @@ import com.example.team12bof.db.Course;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  *:
  */
+
+@RunWith(JUnit4.class)
 public class ExampleUnitTest {
+
     @Test
     public void testCourseNumber() {
         DummyStudent dummyStudent = new DummyStudent(0,"test");
