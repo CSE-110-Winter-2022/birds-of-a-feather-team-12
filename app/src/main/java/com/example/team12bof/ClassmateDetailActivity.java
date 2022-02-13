@@ -13,6 +13,7 @@ import com.example.team12bof.db.AppDatabase;
 import com.example.team12bof.db.Course;
 import com.example.team12bof.db.Student;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClassmateDetailActivity extends AppCompatActivity {
@@ -36,12 +37,34 @@ public class ClassmateDetailActivity extends AppCompatActivity {
         AppDatabase db = AppDatabase.singleton(this);
         Student classmate = db.studentDao().get(classmateId);
         List<Course> courses = db.coursesDao().getForStudent(classmateId);
+        List<Course> user_courses= AddClassActivity.user_courses;
+        List<Course>  shown_courses = new ArrayList<>();
 
-        List<Course> courses_after_insertion = db.coursesDao().getForStudent(classmateId);
+        if(user_courses != null){
+
+            for(int i=0;i<user_courses.size();i++){
+
+
+                for(int j =0; j<courses.size();j++){
+
+                    if(user_courses.get(i).getText().equals(courses.get(j).getText())){
+
+                        shown_courses.add(user_courses.get(i));
+                        break;
+                    }
+                }
+            }
+        }
+        if(shown_courses.size()==0){
+            Course course = new Course(0,"No Shared Courses", "","","");
+            shown_courses.add(course);
+        }
+
+
 
 
         setTitle(classmate.getName());
-        coursesViewAdapter = new CoursesViewAdapter(courses_after_insertion);
+        coursesViewAdapter = new CoursesViewAdapter(shown_courses);
         coursesRecyclerView = findViewById(R.id.courses_view);
 
         coursesLayoutManager = new LinearLayoutManager(this);

@@ -20,6 +20,8 @@ import com.example.team12bof.db.Student;
 
 import org.w3c.dom.Text;
 
+import java.util.List;
+
 /**
  * This class is designed to add new Course based on course ID and course field
  * and also show the previous entry
@@ -27,6 +29,7 @@ import org.w3c.dom.Text;
 public class AddClassActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private int num_courses;
+    public static List<Course> user_courses;
     private DummyStudent user;
     private Student me;
     private AppDatabase db;
@@ -158,6 +161,7 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
                     quarter.getSelectedItem().toString());
             num_courses++;
             user.addCourse(course);
+            user_courses=user.getCourses();
 
             Toast.makeText(AddClassActivity.this,"Course added", Toast.LENGTH_SHORT);
         }
