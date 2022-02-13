@@ -108,4 +108,8 @@ public class Course {
         return quarter;
     }
 
+    public String getText(){
+        return text;
+    }
+
 }
