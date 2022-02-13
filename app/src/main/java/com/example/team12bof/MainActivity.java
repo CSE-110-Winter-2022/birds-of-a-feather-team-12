@@ -3,9 +3,11 @@ package com.example.team12bof;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        load();
     }
 
     /**
@@ -58,6 +61,29 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+    }
+
+
+    public void load(){
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        String name = preferences.getString("Name", "Sara");
+        TextView nameView = findViewById(R.id.nameView);
+
+        nameView.setText(name);
+
+    }
+
+    public void save(){
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        TextView nameView = findViewById(R.id.nameView);
+        editor.putString("Name", nameView.getText().toString());
+        editor.apply();
+    }
+    public void onEnterNameClicked(View view){
+           save();
 
     }
 }
