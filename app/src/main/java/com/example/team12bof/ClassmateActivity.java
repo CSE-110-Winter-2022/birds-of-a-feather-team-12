@@ -21,8 +21,6 @@ public class ClassmateActivity extends AppCompatActivity {
     protected RecyclerView.LayoutManager classmatesLayoutManager;
     protected ClassmateViewAdapter classmateViewAdapter;
 
-    public boolean hasList;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,13 +35,6 @@ public class ClassmateActivity extends AppCompatActivity {
 
 
         List<? extends Student> classmates = db.studentDao().getAll();
-
-        if(classmates.isEmpty()) {
-            hasList = false;
-        }
-        else{
-            hasList = true;
-        }
 
 
         // TODO:
@@ -62,9 +53,5 @@ public class ClassmateActivity extends AppCompatActivity {
         stopService(myIntent);
         Intent intent = new Intent(this,MainActivity.class );
         startActivity(intent);
-    }
-
-    public boolean hasList() {
-        return hasList;
     }
 }
