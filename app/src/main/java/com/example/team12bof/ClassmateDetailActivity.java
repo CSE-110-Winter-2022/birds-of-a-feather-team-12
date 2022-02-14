@@ -24,6 +24,8 @@ public class ClassmateDetailActivity extends AppCompatActivity {
     private RecyclerView classmatesRecyclerView;
     private RecyclerView.LayoutManager classmatesLayoutManager;
 
+    public boolean SameClass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,7 @@ public class ClassmateDetailActivity extends AppCompatActivity {
                     if(user_courses.get(i).getText().equals(courses.get(j).getText())){
 
                         shown_courses.add(user_courses.get(i));
+                        SameClass = true;
                         break;
                     }
                 }
@@ -58,6 +61,7 @@ public class ClassmateDetailActivity extends AppCompatActivity {
         if(shown_courses.size()==0){
             Course course = new Course(0,"No Shared Courses", "","","");
             shown_courses.add(course);
+            SameClass = false;
         }
 
 
@@ -79,4 +83,11 @@ public class ClassmateDetailActivity extends AppCompatActivity {
     public void onGoBackClicked(View view) {
         finish();
     }
+
+    public boolean hasSameClass() {
+        return SameClass;
+    }
+
+
+
 }

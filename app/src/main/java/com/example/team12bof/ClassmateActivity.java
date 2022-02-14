@@ -13,6 +13,7 @@ import com.example.team12bof.db.Course;
 import com.example.team12bof.db.Student;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ClassmateActivity extends AppCompatActivity {
@@ -52,5 +53,12 @@ public class ClassmateActivity extends AppCompatActivity {
         stopService(myIntent);
         Intent intent = new Intent(this,MainActivity.class );
         startActivity(intent);
+    }
+
+    public boolean hasList() {
+        AppDatabase db = AppDatabase.singleton(getApplicationContext());
+        List<? extends Student> classmates = db.studentDao().getAll();
+        if (!classmates.isEmpty()) { return true;}
+        else { return false;}
     }
 }

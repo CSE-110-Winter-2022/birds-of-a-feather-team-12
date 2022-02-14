@@ -33,7 +33,7 @@ public class AddClassUnitTest {
 
         // When it's ready, we're ready to test inside this lambda (anonymous inline function).
         scenario.onActivity(activity -> {
-            // No calculations have been run yet, so there shouldn't be a result!
+            // No input have been run yet, so there shouldn't be an input!
             assertFalse(activity.hasNum());
             assertFalse(activity.hasSubject());
         });
@@ -58,14 +58,14 @@ public class AddClassUnitTest {
 
             numView.setText("110");
             subjectView.setText("CSE");
-            yearView.setSelection(6);
-            quarterView.setSelection(4);
+            yearView.setSelection(0);
+            quarterView.setSelection(1);
             equalsButton.performClick();
 
-            assertNotNull("110", numView);
-            assertNotNull("CSE", subjectView);
-            assertNotNull("2020", yearView);
-            assertNotNull("Winter", quarterView);
+            assertEquals("110", numView.getText().toString());
+            assertEquals("CSE", subjectView.getText().toString());
+            assertEquals("2022", yearView.getSelectedItem().toString());
+            assertEquals("Winter", quarterView.getSelectedItem().toString());
         });
     }
 
