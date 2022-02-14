@@ -43,25 +43,34 @@ public class AddNameUnitTest {
 
         scenario.onActivity(activity -> {
             EditText nameView = activity.findViewById(R.id.nameView);
-
             Button enterButton = activity.findViewById(R.id.button3);
 
-
             nameView.setText("JinmingZhang");
-
             enterButton.performClick();
 
             assertEquals("JinmingZhang", nameView.getText().toString());
-//            assertNotNull("CSE", subjectView);
-//            assertNotNull("2020", yearView);
-//            assertNotNull("Winter", quarterView);
         });
     }
-//    @Test
-//    public void testYears() {
-//        DummyStudent dummyStudent = new DummyStudent(0,"test");
-//        Course course = new Course(0,"110","CSE","2022","Winter");
-//        dummyStudent.addCourse(course);
-//        assertEquals("2022",dummyStudent.getCourses().get(0).getYear());
-//    }
+    @Test
+    public void testName2() {
+        ActivityScenario<MainActivity> scenario = scenarioRule.getScenario();
+
+        scenario.moveToState(Lifecycle.State.CREATED);
+
+        scenario.onActivity(activity -> {
+            EditText nameView = activity.findViewById(R.id.nameView);
+            Button enterButton = activity.findViewById(R.id.button3);
+
+            nameView.setText("Jinming Zhang");
+            enterButton.performClick();
+            nameView.setText("Lin Yu");
+            enterButton.performClick();
+            nameView.setText("Jeannelle_210");
+            enterButton.performClick();
+
+            assertNotEquals("Jinming Zhang",nameView.getText().toString());
+            assertNotEquals("Lin Yu",nameView.getText().toString());
+            assertEquals("Jeannelle_210", nameView.getText().toString());
+        });
+    }
 }
