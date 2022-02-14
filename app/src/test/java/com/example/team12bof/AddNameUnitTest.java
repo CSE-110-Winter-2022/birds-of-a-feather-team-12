@@ -24,7 +24,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.example.team12bof.db.Course;
 
 /**
- * Example local unit test, which will execute on the development machine (host).
+ * Example local unit test, which will execute on the development machine (host)......
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  *:
