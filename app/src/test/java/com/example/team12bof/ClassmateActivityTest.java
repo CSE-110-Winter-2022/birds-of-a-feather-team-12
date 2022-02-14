@@ -26,17 +26,13 @@ public class ClassmateActivityTest {
 
     @Test
     public void testSingleton() {
-        // Create a "scenario" to move through the activity lifecycle.
-        // https://developer.android.com/guide/components/activities/activity-lifecycle
         ActivityScenario<ClassmateActivity> scenario = scenarioRule.getScenario();
 
-        // Make sure the activity is in the created state (so onCreated is called).
         scenario.moveToState(Lifecycle.State.CREATED);
 
-        // When it's ready, we're ready to test inside this lambda (anonymous inline function).
         scenario.onActivity(activity -> {
             //activity.onCreate(Bundle.EMPTY);
-            assertFalse(activity.hasList());
+            assertTrue(activity.hasList());
         });
     }
 

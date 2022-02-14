@@ -33,14 +33,10 @@ public class ClassmateDetailTest {
 
     @Test
     public void testSameClass() {
-        // Create a "scenario" to move through the activity lifecycle.
-        // https://developer.android.com/guide/components/activities/activity-lifecycle
         ActivityScenario<ClassmateDetailActivity> scenario = scenarioRule.getScenario();
 
-        // Make sure the activity is in the created state (so onCreated is called).
         scenario.moveToState(Lifecycle.State.CREATED);
 
-        // When it's ready, we're ready to test inside this lambda (anonymous inline function).
         scenario.onActivity(activity -> {
             //activity.onCreate(Bundle.EMPTY);
             assertTrue(activity.hasSameClass());
