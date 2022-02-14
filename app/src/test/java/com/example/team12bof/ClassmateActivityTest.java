@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,8 +35,8 @@ public class ClassmateActivityTest {
 
         // When it's ready, we're ready to test inside this lambda (anonymous inline function).
         scenario.onActivity(activity -> {
-            RecyclerView list = activity.findViewById(R.id.classmates_view);
-            assertTrue(activity.hasList());
+            //activity.onCreate(Bundle.EMPTY);
+            assertFalse(activity.hasList());
         });
     }
 
