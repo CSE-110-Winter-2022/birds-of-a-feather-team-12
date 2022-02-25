@@ -68,6 +68,12 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
         quarter.setAdapter(adapter_quarter);
         quarter.setOnItemSelectedListener(this);
 
+        Spinner class_size = findViewById(R.id.class_size);
+        ArrayAdapter<CharSequence> adapter_classSize = ArrayAdapter.createFromResource(this, R.array.class_size, android.R.layout.simple_spinner_item);
+        adapter_classSize.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        class_size.setAdapter(adapter_classSize);
+        class_size.setOnItemSelectedListener(this);
+
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
         int year = preferences.getInt("Year", 0);
         school_year.setSelection(year);
@@ -133,8 +139,10 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
 
         Spinner school_year = findViewById(R.id.school_year);
         Spinner quarter = findViewById(R.id.quarter);
+        Spinner class_size = findViewById(R.id.class_size);
         editor.putInt("Year", school_year.getSelectedItemPosition());
         editor.putInt("Quarter", quarter.getSelectedItemPosition());
+        editor.putInt("Class Size", class_size.getSelectedItemPosition());
         editor.apply();
     }
 
@@ -150,6 +158,7 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
         TextView courseNumber = findViewById(R.id.number);
         Spinner school_year = findViewById(R.id.school_year);
         Spinner quarter = findViewById(R.id.quarter);
+        Spinner class_size = findViewById(R.id.class_size);
         if(subject.getText().toString().equals("") ||courseNumber.getText().toString().equals("")){
             Utilities.showAlert(this, "Invalid Entry");
         }
@@ -158,7 +167,8 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
                     courseNumber.getText().toString(),
                     subject.getText().toString(),
                     school_year.getSelectedItem().toString(),
-                    quarter.getSelectedItem().toString());
+                    quarter.getSelectedItem().toString(),
+                    class_size.getSelectedItem().toString());
             num_courses++;
             user.addCourse(course);
             user_courses=user.getCourses();
