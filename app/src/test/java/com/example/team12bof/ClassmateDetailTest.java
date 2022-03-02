@@ -39,7 +39,7 @@ public class ClassmateDetailTest {
 
         scenario.onActivity(activity -> {
             //activity.onCreate(Bundle.EMPTY);
-            assertTrue(activity.hasSameClass());
+            assertFalse(activity.hasSameClass());
         });
     }
 
