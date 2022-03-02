@@ -7,6 +7,17 @@
     tools:context=".AddClassActivity">
 
     <Spinner
+        android:id="@+id/class_size"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="360dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
         android:id="@+id/school_year"
         android:layout_width="300dp"
         android:layout_height="48dp"

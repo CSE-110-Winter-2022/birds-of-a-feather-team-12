@@ -59,7 +59,7 @@ public class ClassmateDetailActivity extends AppCompatActivity {
             }
         }
         if(shown_courses.size()==0){
-            Course course = new Course(0,"No Shared Courses", "","","");
+            Course course = new Course(0,"No Shared Courses", "","","","");
             shown_courses.add(course);
             SameClass = false;
         }

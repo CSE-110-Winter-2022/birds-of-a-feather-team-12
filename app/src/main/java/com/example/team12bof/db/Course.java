@@ -42,6 +42,10 @@ public class Course {
     @ColumnInfo(name = "quarter")
     public String quarter;
 
+    // Size of the course
+    @ColumnInfo(name = "class_size")
+    public String classSize;
+
     @ColumnInfo(name = "text")
     public String text;
 
@@ -54,13 +58,14 @@ public class Course {
      * @param year
      * @param quarter
      */
-    public Course(int studentId, String course_number, String subject, String year, String quarter){
+    public Course(int studentId, String course_number, String subject, String year, String quarter, String classSize){
         this.courseId=courseId;
         this.studentId=studentId;
         this.course_number=course_number;
         this.subject=subject;
         this.year=year;
         this.quarter=quarter;
+        this.classSize = classSize;
         this.text = subject + " " + course_number + " " + quarter + " " + year; // ex: "CSE 110 Winter 2022"
     }
 

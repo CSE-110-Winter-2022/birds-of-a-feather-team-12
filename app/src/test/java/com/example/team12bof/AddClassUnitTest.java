@@ -55,17 +55,20 @@ public class AddClassUnitTest {
             Button equalsButton = activity.findViewById(R.id.enter_btn);
             Spinner yearView = activity.findViewById(R.id.school_year);
             Spinner quarterView = activity.findViewById(R.id.quarter);
+            Spinner classSizeView = activity.findViewById(R.id.class_size);
 
             numView.setText("110");
             subjectView.setText("CSE");
             yearView.setSelection(0);
             quarterView.setSelection(1);
+            classSizeView.setSelection(2);
             equalsButton.performClick();
 
             assertEquals("110", numView.getText().toString());
             assertEquals("CSE", subjectView.getText().toString());
             assertEquals("2022", yearView.getSelectedItem().toString());
             assertEquals("Winter", quarterView.getSelectedItem().toString());
+            assertEquals("Medium (75-150)", classSizeView.getSelectedItem().toString());
         });
     }
 
