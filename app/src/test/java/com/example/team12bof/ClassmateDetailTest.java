@@ -30,7 +30,8 @@ import java.util.List;
 public class ClassmateDetailTest {
     @Rule
     public ActivityScenarioRule<ClassmateDetailActivity> scenarioRule = new ActivityScenarioRule<>(ClassmateDetailActivity.class);
-
+    
+    /*
     @Test
     public void testSameClass() {
         ActivityScenario<ClassmateDetailActivity> scenario = scenarioRule.getScenario();
@@ -43,7 +44,7 @@ public class ClassmateDetailTest {
         });
     }
 
-    /*
+    
     @Test
     public void testHasSameClass() {
         ActivityScenario<ClassmateDetailActivity> scenario = scenarioRule.getScenario();
