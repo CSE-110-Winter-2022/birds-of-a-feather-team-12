@@ -5,9 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.google.android.gms.nearby.Nearby;
+import com.google.android.gms.nearby.messages.Message;
+import com.google.android.gms.nearby.messages.MessageListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +28,18 @@ public class MainActivity extends AppCompatActivity {
      * This method is used when an activity is created
      * @param savedInstanceState
      */
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         load();
+
     }
+
+
 
     /**
      * This method is designed to move to another activity(AddClassActivity)
@@ -41,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onStartClicked(View view) {
-        ProgressBar myBar = findViewById(R.id.progressBar);
+       /* ProgressBar myBar = findViewById(R.id.progressBar);
         myBar.setVisibility(View.VISIBLE);
 
         Intent intent1 = new Intent(MainActivity.this, DemoService.class);
@@ -56,11 +67,13 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, ClassmateActivity.class);
                 startActivity(intent);
             }
-        }, 2000);
+        }, 2000);*/
 
-
-
-
+        //super.onStart();
+        Intent intent1 = new Intent(MainActivity.this, DemoService.class);
+        startService(intent1);
+        Intent intent = new Intent(MainActivity.this, ClassmateActivity.class);
+        startActivity(intent);
 
     }
 
@@ -85,5 +98,10 @@ public class MainActivity extends AppCompatActivity {
     public void onEnterNameClicked(View view){
            save();
 
+    }
+
+    public void onMockClicked(View view) {
+        Intent huh = new Intent(this, MockMessageActivity.class);
+        startActivity(huh);
     }
 }

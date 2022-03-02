@@ -1,58 +1,46 @@
-package com.example.team12bof;
+/*package com.example.team12bof;
+
+
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.View;
+import android.util.Log;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-
 import com.example.team12bof.db.AppDatabase;
+
 import com.example.team12bof.db.Course;
 import com.example.team12bof.db.CoursesDao;
 import com.example.team12bof.db.Student;
-import com.google.android.gms.nearby.messages.Message;
-import com.google.android.gms.nearby.messages.MessageListener;
-
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.Toast;
+import com.example.team12bof.db.StudentDao;
 
 import com.google.android.gms.nearby.Nearby;
 import com.google.android.gms.nearby.messages.Message;
 import com.google.android.gms.nearby.messages.MessageListener;
 
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
-public class ClassmateActivity extends AppCompatActivity {
-    protected RecyclerView classmatesRecyclerView;
-    protected RecyclerView.LayoutManager classmatesLayoutManager;
-    protected ClassmateViewAdapter classmateViewAdapter;
+public class listOfClassmates extends AppCompatActivity {
 
-
-    private MessageListener messageListener;
-
-
-    protected RecyclerView personsRecyclerView;
-    protected RecyclerView.LayoutManager personsLayoutManager;
     private AppDatabase db;
 
     protected RecyclerView studentRecyclerView;
     protected RecyclerView.LayoutManager studentLayoutManager;
-    protected ClassmateViewAdapter studentViewAdapter;
+    protected ListOfBoFViewAdapter studentViewAdapter;
 
     private MessageListener realListener;
     private FakedMessageListener testListener;
+
+
 
     private static final String TAG = "bofNearby";
 
@@ -60,11 +48,10 @@ public class ClassmateActivity extends AppCompatActivity {
     private HashSet<String> seenMessages;
     private HashSet<Course> ownCoursesSet;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_classmate);
+        setContentView(R.layout.activity_boflist);
         Log.d("onCreate", "called onCreate");
 
         // Get list of messages from Nearby Messages Mock Screen
@@ -84,17 +71,20 @@ public class ClassmateActivity extends AppCompatActivity {
         // Initialize a HashSet of messages that we've seen so far
         seenMessages = new HashSet<>();
 
+
+
+
         // Set up UI
-        studentRecyclerView = findViewById(R.id.classmates_view);
+        studentRecyclerView = findViewById(R.id.student_view);
 
         studentLayoutManager = new LinearLayoutManager(this);
         studentRecyclerView.setLayoutManager(studentLayoutManager);
 
-        studentViewAdapter = new ClassmateViewAdapter(students);
+        studentViewAdapter = new ListOfBoFViewAdapter(students);
         studentRecyclerView.setAdapter(studentViewAdapter);
 
         // Initialize our Message Listener
-        realListener = new ClassmateActivity.builtInMessageListener();
+        realListener = new builtInMessageListener();
 
         // Use Fake Message Listener for the demo
         this.testListener = new FakedMessageListener(realListener, messages);
@@ -108,6 +98,8 @@ public class ClassmateActivity extends AppCompatActivity {
             Log.d("Performed Click", "True");
         }
     }
+
+    // Restarts search for new bof if it was never turned off by user
     @Override
     public void onStart() {
         super.onStart();
@@ -198,7 +190,7 @@ public class ClassmateActivity extends AppCompatActivity {
                 parseStudentMessage(rawString);
                 // Refresh screen with new data after processing
                 List<Student> students = db.studentDao().getAll();
-                studentViewAdapter = new ClassmateViewAdapter(students);
+                studentViewAdapter = new ListOfBoFViewAdapter(students);
                 studentRecyclerView.setAdapter(studentViewAdapter);
             }
         }
@@ -221,10 +213,7 @@ public class ClassmateActivity extends AppCompatActivity {
 
             Course newCourse;
             // Ensure that a new student ID is used
-            Student newStudent = new Student(studentName);
-            db.studentDao().insert(newStudent);
-            int studentId = db.studentDao().getAll().size()-1;
-
+            int studentId = db.studentDao().getAll().size();
 
             // Iterate through all course strings
             for(int i = 1; i < coursesString.length; i ++){
@@ -242,23 +231,24 @@ public class ClassmateActivity extends AppCompatActivity {
                 String qtr = courseParts[1];
                 Log.d("Found new qtr", qtr);
                 // TODO: Verify the correctness of class comparison?
-                /*String size = courseParts[4];
+                String size = courseParts[4];
                 Log.d("Found new size", size);
-
-                 */
 
                 // Create new course
                 newCourse = new Course(studentId, dept, num, year, qtr);
 
                 // If new course matches with one of the user's courses, add it to the database
-
+                if (ownCoursesSet.contains(newCourse)) {
                     db.coursesDao().insert(newCourse);
                     numClassesOverlap++;
+                }
             }
 
             // If new student has 1 or more shared courses, add them to the student database
-
-
+            if (numClassesOverlap > 0) {
+                Student newStudent = new Student(studentName);
+                db.studentDao().insert(newStudent);
+            }
         }
 
         @Override
@@ -268,76 +258,4 @@ public class ClassmateActivity extends AppCompatActivity {
     }
 
 }
-
-
-/*
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_classmate);
-        setTitle("List of BoFs");
-
-        MessageListener realListener = new MessageListener() {
-            @Override
-            public void onFound(Message message) {
-               String msg = new String((message.getContent()));
-                Log.d(TAG, "Found message: " + msg);
-                Toast.makeText(getApplication(), "Lost sight of message: " + msg, Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onLost(Message message) {
-                Log.d(TAG, "Lost sight of message: " + new String(message.getContent()));
-            }
-        };
-
-
-
-        onStart();
-
-
-        classmatesRecyclerView = findViewById(R.id.classmates_view);
-
-        classmatesLayoutManager = new LinearLayoutManager(this);
-        classmatesRecyclerView.setLayoutManager(classmatesLayoutManager);
-
-
-
-
-
-       /* AppDatabase db = AppDatabase.singleton(getApplicationContext());
-
-
-
-
-        List<? extends Student> classmates = db.studentDao().getAll();
-
-
-        // TODO:
-        classmatesRecyclerView = findViewById(R.id.classmates_view);
-
-        classmatesLayoutManager = new LinearLayoutManager(this);
-        classmatesRecyclerView.setLayoutManager(classmatesLayoutManager);
-
-        classmateViewAdapter = new ClassmateViewAdapter(classmates);
-        classmatesRecyclerView.setAdapter(classmateViewAdapter);*/
-
-
-/*
-    public void onStopClicked(View view){
-        onStop();
-        Intent myIntent = new Intent(this, DemoService.class);
-        stopService(myIntent);
-        Intent intent = new Intent(this,MainActivity.class );
-        startActivity(intent);
-    }
-    public void onStart() {
-        super.onStart();
-        Nearby.getMessagesClient(this).subscribe(messageListener);
-    }
-
-    @Override
-    public void onStop() {
-        Nearby.getMessagesClient(this).unsubscribe(messageListener);
-        super.onStop();
-    }
-    */
+ */

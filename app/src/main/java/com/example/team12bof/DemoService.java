@@ -3,10 +3,16 @@ package com.example.team12bof;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.nearby.Nearby;
+import com.google.android.gms.nearby.messages.Message;
+import com.google.android.gms.nearby.messages.MessageListener;
+
 public class DemoService extends Service {
+
     public DemoService() {
     }
 

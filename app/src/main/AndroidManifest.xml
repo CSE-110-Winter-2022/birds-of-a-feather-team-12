@@ -13,9 +13,14 @@
             android:name=".DemoService"
             android:enabled="true"
             android:exported="true"></service>
-
+        <meta-data
+            android:name="API key 1"
+            android:value="AIzaSyBK8vtVHNd7Xg6yKzOakDDMQui4DCtO9fw" />
         <activity
             android:name=".ClassmateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MockMessageActivity"
             android:exported="false" />
         <activity
             android:name=".ClassmateDetailActivity"
