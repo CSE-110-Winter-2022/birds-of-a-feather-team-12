@@ -212,7 +212,7 @@ public class ClassmateActivity extends AppCompatActivity {
             CoursesDao courseDao = db.coursesDao();
 
             // Split message by the 3 commas
-            String[] data = studentMessage.split(",,,");
+            String[] data = studentMessage.split(", ");
             studentName = data[0];
             photoUrl = data[1];
 
@@ -223,23 +223,23 @@ public class ClassmateActivity extends AppCompatActivity {
             // Ensure that a new student ID is used
             Student newStudent = new Student(studentName);
             db.studentDao().insert(newStudent);
-            int studentId = db.studentDao().getAll().size()-1;
+            int studentId = db.studentDao().getAll().indexOf(newStudent);
 
 
             // Iterate through all course strings
             for(int i = 1; i < coursesString.length; i ++){
                 String course = coursesString[i];
-                String[] courseParts = course.split(",");
+                String[] courseParts = course.split(".");
 
                 // Ensure that a new course ID is used
 
-                String dept = courseParts[2];
+                String dept = courseParts[0];
                 Log.d("Found new dept", dept);
-                String num = courseParts[3];
+                String num = courseParts[1];
                 Log.d("Found new course num", num);
-                String year = courseParts[0];
+                String year = courseParts[3];
                 Log.d("Found new year", year);
-                String qtr = courseParts[1];
+                String qtr = courseParts[2];
                 Log.d("Found new qtr", qtr);
                 // TODO: Verify the correctness of class comparison?
                 /*String size = courseParts[4];
@@ -253,6 +253,7 @@ public class ClassmateActivity extends AppCompatActivity {
                 // If new course matches with one of the user's courses, add it to the database
 
                     db.coursesDao().insert(newCourse);
+                    Log.d("Found new size", newCourse.text);
                     numClassesOverlap++;
             }
 
