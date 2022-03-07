@@ -14,8 +14,10 @@
             android:enabled="true"
             android:exported="true"></service>
         <meta-data
-            android:name="API key 1"
-            android:value="AIzaSyBK8vtVHNd7Xg6yKzOakDDMQui4DCtO9fw" />
+            android:name="com.google.android.nearby.messages.API_KEY"
+
+            android:value="AIzaSyDaov8m80MVpsknjLt2_G64037ajdANSoU"
+            />
         <activity
             android:name=".ClassmateActivity"
             android:exported="false" />

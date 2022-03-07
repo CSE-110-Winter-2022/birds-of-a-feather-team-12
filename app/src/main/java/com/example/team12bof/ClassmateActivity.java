@@ -217,19 +217,31 @@ public class ClassmateActivity extends AppCompatActivity {
             photoUrl = data[1];
 
             // Split message by new line
-            String[] coursesString = data[2].split("\n");
+            String[] courseParts = data[2].split(" ");
 
             Course newCourse;
             // Ensure that a new student ID is used
             Student newStudent = new Student(studentName);
             db.studentDao().insert(newStudent);
-            int studentId = db.studentDao().getAll().indexOf(newStudent);
+            int studentId = db.studentDao().getAll().size()-1;
+
+            String dept = courseParts[0];
+            Log.d("Found new dept", dept);
+            String num = courseParts[1];
+            Log.d("Found new course num", num);
+            String year = courseParts[3];
+            Log.d("Found new year", year);
+            String qtr = courseParts[2];
+            Log.d("Found new qtr", qtr);
+            // TODO: Verify the correctness of class comparison?
+                /*String size = courseParts[4];
+                Log.d("Found new size", size);
 
 
             // Iterate through all course strings
-            for(int i = 1; i < coursesString.length; i ++){
+            /*for(int i = 1; i < coursesString.length; i ++){
                 String course = coursesString[i];
-                String[] courseParts = course.split(".");
+                String[] courseParts = course.split(" ");
 
                 // Ensure that a new course ID is used
 
@@ -248,14 +260,16 @@ public class ClassmateActivity extends AppCompatActivity {
                  */
 
                 // Create new course
-                newCourse = new Course(studentId, dept, num, year, qtr);
+                newCourse = new Course(5, num, dept, year, qtr);
+                Log.d(TAG,"num" + num);
+
 
                 // If new course matches with one of the user's courses, add it to the database
 
                     db.coursesDao().insert(newCourse);
                     Log.d("Found new size", newCourse.text);
                     numClassesOverlap++;
-            }
+
 
             // If new student has 1 or more shared courses, add them to the student database
 
