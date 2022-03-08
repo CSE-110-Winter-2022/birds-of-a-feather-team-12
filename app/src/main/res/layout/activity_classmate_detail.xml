@@ -25,4 +25,22 @@
         android:layout_marginTop="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="77dp"
+        android:layout_height="74dp"
+        android:layout_gravity="right"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="64dp"
+        style="@style/toggleButton"
+        android:background="@drawable/ic_toggle_bg"
+        android:textSize="0sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/go_back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courses_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>
