@@ -68,7 +68,7 @@ public class ClassmateDetailActivity extends AppCompatActivity {
 
 
         setTitle(classmate.getName());
-        coursesViewAdapter = new CoursesViewAdapter(courses);
+        coursesViewAdapter = new CoursesViewAdapter(shown_courses);
         coursesRecyclerView = findViewById(R.id.courses_view);
 
         coursesLayoutManager = new LinearLayoutManager(this);
