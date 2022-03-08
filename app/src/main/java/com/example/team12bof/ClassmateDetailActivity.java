@@ -5,9 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.example.team12bof.db.AppDatabase;
 import com.example.team12bof.db.Course;
@@ -25,6 +27,7 @@ public class ClassmateDetailActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager classmatesLayoutManager;
 
     public boolean SameClass;
+    private static int classmateId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +36,20 @@ public class ClassmateDetailActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        int classmateId = intent.getIntExtra("classmate_id", 0);
+        classmateId = intent.getIntExtra("classmate_id", 0);
 
 
+        ToggleButton Tbutton = findViewById(R.id.toggleButton);
+
+        String t = (ClassmateViewAdapter.myIds).toString();
+        String[] mt = t.split(",");
+        String com = Integer.toString(classmateId);
+        for(int i =0; i< mt.length;i++){
+
+            if( mt[i].equals(com)){
+                Tbutton.setChecked(true);
+            }
+        }
         AppDatabase db = AppDatabase.singleton(this);
         Student classmate = db.studentDao().get(classmateId);
         List<Course> courses = db.coursesDao().getForStudent(classmateId);
@@ -81,6 +95,33 @@ public class ClassmateDetailActivity extends AppCompatActivity {
 
 
     public void onGoBackClicked(View view) {
+
+        SharedPreferences preferences1 = getPreferences(MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = preferences1.edit();
+        ToggleButton Tbutton = findViewById(R.id.toggleButton);
+
+
+        String cl = Integer.toString(classmateId);
+        if(Tbutton.isChecked()){
+            ClassmateViewAdapter.myIds.append(cl).append(",");
+
+        }
+        else{
+            String ghg = ( ClassmateViewAdapter.myIds).toString();
+            String[] df = ghg.split(",");
+            for(int k = 0; k < df.length; k++ ){
+                if(df[k].equals(cl)){
+                    df[k] = "-1";
+                    ClassmateViewAdapter.myIds = (ClassmateViewAdapter.myIds).delete(0,(ClassmateViewAdapter.myIds).length());
+                    for(int g = 0; g < df.length; g++){
+                        ClassmateViewAdapter.myIds = (ClassmateViewAdapter.myIds).append(df[g]).append(",");
+                    }
+                }
+            }
+
+        }
+
         finish();
     }
 

@@ -18,6 +18,7 @@ import java.util.List;
 public class ClassmateViewAdapter extends RecyclerView.Adapter<ClassmateViewAdapter.ViewHolder> {
     private final List<? extends Student> classmates;
 
+    public static StringBuilder myIds = new StringBuilder();
     public ClassmateViewAdapter(List<? extends Student> classmates) {
         super();
         this.classmates = classmates;
