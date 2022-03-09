@@ -86,4 +86,9 @@ public class MainActivity extends AppCompatActivity {
            save();
 
     }
+
+    public void onMockedClicked(View view){
+        Intent myIntent = new Intent(this, MockScreenActivity.class);
+        startActivity(myIntent);
+    }
 }
