@@ -42,6 +42,7 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
     /**
      * This method is designed to set the course number, course field
      * the year and the quarter
+     *
      * @param savedInstanceState
      */
     @Override
@@ -53,8 +54,8 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
 
         db = AppDatabase.singleton(getApplicationContext());
 
-        user = new DummyStudent(4,"user");
-        num_courses =0;
+        user = new DummyStudent(4, "user");
+        num_courses = 0;
 
         Spinner school_year = findViewById(R.id.school_year);
         ArrayAdapter<CharSequence> adapter_year = ArrayAdapter.createFromResource(this, R.array.years, android.R.layout.simple_spinner_item);
@@ -79,22 +80,20 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
         school_year.setSelection(year);
         int quarterrr = preferences.getInt("Quarter", 0);
         quarter.setSelection(quarterrr);
-
-        int classSize = preferences.getInt("Class Size", 0);
-        class_size.setSelection(classSize);
     }
 
     /**
      * This method controls what is inserted to save it
      */
     @Override
-    protected void onDestroy(){
+    protected void onDestroy() {
         super.onDestroy();
         saveProfile();
     }
 
     /**
      * This method is designed to show the selected item
+     *
      * @param adapterView
      * @param view
      * @param i
@@ -114,10 +113,10 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
     /**
      * This method is designed to load the entry that was inserted previously
      */
-    public void loadProfile(){
+    public void loadProfile() {
 
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-        String courseNum = preferences.getString("Course Number","");
+        String courseNum = preferences.getString("Course Number", "");
         String courseSub = preferences.getString("Course Subject", "");
         TextView nnn = findViewById(R.id.number);
         TextView sss = findViewById(R.id.subject);
@@ -130,7 +129,7 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
      * This method is designed to save the information of the
      * intended course that we insert
      */
-    public void saveProfile(){
+    public void saveProfile() {
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
 
@@ -153,6 +152,7 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
      * This method is control the entry after pushing
      * enter button. If the insert information is valid, it shows them
      * If it's not valid, it sends the invalid message
+     *
      * @param view
      */
     public void onEnterClicked(View view) {
@@ -162,10 +162,9 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
         Spinner school_year = findViewById(R.id.school_year);
         Spinner quarter = findViewById(R.id.quarter);
         Spinner class_size = findViewById(R.id.class_size);
-        if(subject.getText().toString().equals("") ||courseNumber.getText().toString().equals("")){
+        if (subject.getText().toString().equals("") || courseNumber.getText().toString().equals("")) {
             Utilities.showAlert(this, "Invalid Entry");
-        }
-        else {
+        } else {
             Course course = new Course(user.getId(),
                     courseNumber.getText().toString(),
                     subject.getText().toString(),
@@ -174,15 +173,16 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
                     class_size.getSelectedItem().toString());
             num_courses++;
             user.addCourse(course);
-            user_courses=user.getCourses();
+            user_courses = user.getCourses();
 
-            Toast.makeText(AddClassActivity.this,"Course added", Toast.LENGTH_SHORT);
+            Toast.makeText(AddClassActivity.this, "Course added", Toast.LENGTH_SHORT);
         }
     }
 
     /**
      * this method return whether the course number we
      * inserted is empty or not
+     *
      * @return
      */
     public boolean hasNum() {
@@ -194,6 +194,7 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
     /**
      * this method return whether the course number we
      * inserted is empty or not
+     *
      * @return
      */
     public boolean hasSubject() {
