@@ -17,7 +17,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
-
+//test
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -149,7 +149,7 @@ public class NoSharedCoursesTest {
         materialButton3.perform(click());
 
         ViewInteraction materialButton4 = onView(
-                allOf(withId(R.id.start_search), withText("Start"),
+                allOf(withId(R.id.startbut), withText("Start"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),

@@ -144,7 +144,7 @@ public class SharedCoursesTest {
         materialButton3.perform(click());
 
         ViewInteraction materialButton4 = onView(
-                allOf(withId(R.id.start_search), withText("Start"),
+                allOf(withId(R.id.startbut), withText("Start"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
