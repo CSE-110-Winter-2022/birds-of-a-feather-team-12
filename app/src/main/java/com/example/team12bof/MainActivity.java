@@ -86,4 +86,10 @@ public class MainActivity extends AppCompatActivity {
            save();
 
     }
+
+    public void onMockClicked(View view) {
+        Intent huh = new Intent(this, MockedMessageActivity.class);
+        startActivity(huh);
+    }
+
 }

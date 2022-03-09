@@ -79,6 +79,9 @@ public class AddClassActivity extends AppCompatActivity implements AdapterView.O
         school_year.setSelection(year);
         int quarterrr = preferences.getInt("Quarter", 0);
         quarter.setSelection(quarterrr);
+
+        int classSize = preferences.getInt("Class Size", 0);
+        class_size.setSelection(classSize);
     }
 
     /**
