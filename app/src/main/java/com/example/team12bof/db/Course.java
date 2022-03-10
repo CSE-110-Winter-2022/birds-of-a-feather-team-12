@@ -113,6 +113,10 @@ public class Course {
         return quarter;
     }
 
+    public String getClassSize(){
+        return classSize;
+    }
+
     public String getText(){
         return text;
     }
