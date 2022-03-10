@@ -18,11 +18,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/startbut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onStopClicked"
-        android:text="Stop"
+        android:onClick="onStartClicked"
+        android:text="Start"
         app:layout_constraintBottom_toTopOf="@+id/classmates_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.111"
@@ -61,4 +61,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/second" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="273dp"
+        android:layout_marginBottom="18dp"
+        android:text="Go back"
+        android:onClick="onFinishClicked"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/classmates_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>

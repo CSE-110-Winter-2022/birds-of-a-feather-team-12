@@ -68,7 +68,7 @@ public class AddClassUnitTest {
             assertEquals("CSE", subjectView.getText().toString());
             assertEquals("2022", yearView.getSelectedItem().toString());
             assertEquals("Winter", quarterView.getSelectedItem().toString());
-            assertEquals("Medium (75-150)", classSizeView.getSelectedItem().toString());
+            assertEquals("Medium(75-150)", classSizeView.getSelectedItem().toString());
         });
     }
 

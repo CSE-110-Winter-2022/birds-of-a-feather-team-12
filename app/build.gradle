@@ -31,10 +31,14 @@ android {
             includeAndroidResources = true
         }
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
 
+    implementation 'com.google.android.gms:play-services-nearby:18.0.2'
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.4.0'
     def room_version = "2.4.1"
     androidTestImplementation 'androidx.test:rules:1.4.0'

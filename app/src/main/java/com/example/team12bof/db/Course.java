@@ -66,7 +66,7 @@ public class Course {
         this.year=year;
         this.quarter=quarter;
         this.classSize = classSize;
-        this.text = subject + " " + course_number + " " + quarter + " " + year; // ex: "CSE 110 Winter 2022"
+        this.text = subject + " " + course_number + " " + quarter + " " + year + " " + classSize; // ex: "CSE 110 Winter 2022"
     }
 
     /**
