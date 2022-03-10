@@ -70,7 +70,7 @@ public class SortSmall implements Sorter{
     }
 
     public List<double[]> sortPairs(List<double[]> scores) {
-        Comparator<double[]> sortByScore= (d1,d2) -> Double.compare(d1[0],d2[0]);
+        Comparator<double[]> sortByScore= (d1,d2) -> Double.compare(d2[0],d1[0]);
         Collections.sort(scores,sortByScore);
         return scores;
     }

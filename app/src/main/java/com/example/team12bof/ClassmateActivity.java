@@ -71,6 +71,8 @@ public class ClassmateActivity extends AppCompatActivity {
         classmateLayoutManager = new LinearLayoutManager(this);
         classmateRecyclerView.setLayoutManager(classmateLayoutManager);
 
+
+
         classmateViewAdapter = new ClassmateViewAdapter(classmates);
         classmateRecyclerView.setAdapter(classmateViewAdapter);
 
@@ -194,6 +196,8 @@ public class ClassmateActivity extends AppCompatActivity {
 
 
                 List<Student> classmates = db.studentDao().getAll();
+                Sorter sorter = new SortQuarterOnly();
+                sorter.sort(db,AddClassActivity.user_courses,"Winter","2022");
                 classmateViewAdapter = new ClassmateViewAdapter(classmates);
                 classmateRecyclerView.setAdapter(classmateViewAdapter);
             }
