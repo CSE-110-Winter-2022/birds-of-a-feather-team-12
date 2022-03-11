@@ -29,6 +29,12 @@
         <item>Huge(250-400)</item>
         <item>Gigantic (400+)</item>
     </string-array>
+    <string-array name="filters">
+        <item>Prioritize recent</item>
+        <item>Prioritize small classes</item>
+        <item>This quarter only</item>
+
+    </string-array>
     <string name="title_activity_mocked_message">MockedMessageActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

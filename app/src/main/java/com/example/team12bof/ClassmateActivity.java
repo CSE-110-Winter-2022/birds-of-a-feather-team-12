@@ -24,14 +24,17 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
 import com.google.android.gms.nearby.Nearby;
 
 
-public class ClassmateActivity extends AppCompatActivity {
+public class ClassmateActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private AppDatabase db;
 
@@ -44,6 +47,9 @@ public class ClassmateActivity extends AppCompatActivity {
     private FakedMessageListener realListener;
     private static final String TAG = "team12bof";
     private HashSet<String> alreadySeen;
+    private Spinner filter;
+    private ArrayAdapter<CharSequence> adapter_filter;
+
 
 
 
@@ -55,6 +61,11 @@ public class ClassmateActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         ArrayList<String> nearbyMessages = intent.getStringArrayListExtra("messages");
+        filter = findViewById(R.id.filterSpin);
+        adapter_filter = ArrayAdapter.createFromResource(this, R.array.filters, android.R.layout.simple_spinner_item);
+        adapter_filter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        filter.setAdapter(adapter_filter);
+        filter.setOnItemSelectedListener(this);
 
         SharedPreferences preferences = getSharedPreferences("BOF", MODE_PRIVATE);
         boolean startmode = preferences.getBoolean("startmode", false);
@@ -70,6 +81,7 @@ public class ClassmateActivity extends AppCompatActivity {
 
         classmateLayoutManager = new LinearLayoutManager(this);
         classmateRecyclerView.setLayoutManager(classmateLayoutManager);
+
 
 
 
@@ -137,6 +149,37 @@ public class ClassmateActivity extends AppCompatActivity {
         super.onStop();
         Log.d("oStop", "Stop");
         Nearby.getMessagesClient(this).unsubscribe(myMessageListener);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        Sorter sorter;
+        String selectedItem =  adapterView.getItemAtPosition(i).toString();
+        if(selectedItem.equals( "Prioritize recent")){
+            sorter = new SortRecent();
+            List<Student> classmates = sorter.sort(db,AddClassActivity.user_courses,"Winter","2022");
+            classmateViewAdapter = new ClassmateViewAdapter(classmates);
+            classmateRecyclerView.setAdapter(classmateViewAdapter);
+
+        }
+        if(selectedItem.equals( "Prioritize small classes")){
+            sorter = new SortSmall();
+            List<Student> classmates = sorter.sort(db,AddClassActivity.user_courses,"Winter","2022");
+            classmateViewAdapter = new ClassmateViewAdapter(classmates);
+            classmateRecyclerView.setAdapter(classmateViewAdapter);
+        }
+        if(selectedItem.equals( "This quarter only")){
+            sorter = new SortQuarterOnly();
+            List<Student> classmates = sorter.sort(db,AddClassActivity.user_courses,"Winter","2022");
+            classmateViewAdapter = new ClassmateViewAdapter(classmates);
+            classmateRecyclerView.setAdapter(classmateViewAdapter);
+
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 
     public class MockedMessageListener extends MessageListener {
