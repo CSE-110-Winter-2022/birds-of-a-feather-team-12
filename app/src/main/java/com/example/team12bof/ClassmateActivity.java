@@ -162,7 +162,7 @@ public class ClassmateActivity extends AppCompatActivity {
 
                 String[] courses = data[2].split("/");
 
-                Student newStudent = new Student(studentName);
+                Student newStudent = new Student(studentName, photoUrl);
                 db.studentDao().insert(newStudent);
                 int studentId = db.studentDao().getAll().get(db.studentDao().getAll().size()-1).getStudentId();
 

@@ -26,8 +26,12 @@ public class Student {
     @ColumnInfo(name="name")
     public String name;
 
-    public Student(String name) {
+    @ColumnInfo(name="URL")
+    public String URL;
+
+    public Student(String name, String URL) {
         this.name = name;
+        this.URL = URL;
     }
 
     public int getStudentId() {
@@ -44,5 +48,9 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getURL() {
+        return URL;
     }
 }
