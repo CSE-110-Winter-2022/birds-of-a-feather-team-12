@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.team12bof.db.AppDatabase;
@@ -127,6 +128,13 @@ public class ClassmateDetailActivity extends AppCompatActivity {
 
     public boolean hasSameClass() {
         return SameClass;
+    }
+
+    public void onToggle(View view){
+        ToggleButton Tbutton = findViewById(R.id.toggleButton);
+        if(Tbutton.isChecked()){
+            Toast.makeText( ClassmateDetailActivity.this,"Saved to Favorites", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
