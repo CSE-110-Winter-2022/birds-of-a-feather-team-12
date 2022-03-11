@@ -16,22 +16,27 @@ public class SortRecent implements Sorter {
         List<Course> currStudentCourses;
         List<double[]> pairs = new ArrayList<>();
         double score =0;
+        boolean sharedClass = false;
         List<Student> prioSmall = new ArrayList<>();
         List<Student> students = db.studentDao().getAll();
 
         for(int i = 0; i< students.size(); i++){
             score =0;
+            sharedClass=false;
             Student currStudent = students.get(i);
             currStudentCourses = db.coursesDao().getForStudent(currStudent.getStudentId());
             for(int j = 0; j< currStudentCourses.size();j++){
                 for(int k =0; k< userCourses.size();k++){
                     if(currStudentCourses.get(j).getText().equals(userCourses.get(k).getText())){
                         score += findScore(currStudentCourses.get(j).getQuarter(),currStudentCourses.get(j).getYear(),qtr,year);
+                        sharedClass=true;
                     }
                 }
             }
+            if (sharedClass) {
+                pairs.add(new double[]{score, (double) currStudent.getStudentId()});
+            }
 
-            pairs.add(new double[]{score, (double) currStudent.getStudentId()});
 
 
         }
