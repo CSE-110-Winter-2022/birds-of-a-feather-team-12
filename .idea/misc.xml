@@ -3,12 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/drawable/ic_toggle.xml" value="0.1" />
-        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/drawable/ic_toggle_bg.xml" value="0.1" />
-        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_classmate.xml" value="0.12545289855072464" />
-        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_main.xml" value="0.12545289855072464" />
-        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_mock_screen.xml" value="0.12545289855072464" />
-        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_mocked_message.xml" value="0.12545289855072464" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_classmate.xml" value="0.1" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_mock_messages.xml" value="0.11594202898550725" />
         <entry key="..\:/Users/ITX/StudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/activity_add_class.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/ITX/StudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/activity_classmate.xml" value="0.1933876811594203" />
         <entry key="..\:/Users/ITX/StudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/activity_classmate_detail.xml" value="0.1933876811594203" />
@@ -17,8 +14,11 @@
         <entry key="..\:/Users/ITX/StudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/courses_row.xml" value="0.1933876811594203" />
         <entry key="..\:/Users/aleja/AndroidStudioProjects/birds-of-a-feather-team-12/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13229166666666667" />
         <entry key="..\:/Users/aleja/AndroidStudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/activity_add_class.xml" value="0.13645833333333332" />
+        <entry key="..\:/Users/aleja/AndroidStudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/activity_classmate.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/aleja/AndroidStudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/activity_main.xml" value="0.13858695652173914" />
+        <entry key="..\:/Users/aleja/AndroidStudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/activity_mocked_message.xml" value="0.2859375" />
         <entry key="..\:/Users/aleja/AndroidStudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/activity_some_class.xml" value="0.13645833333333332" />
+        <entry key="..\:/Users/aleja/AndroidStudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/classmate_row.xml" value="0.2859375" />
       </map>
     </option>
   </component>
