@@ -1,6 +1,7 @@
 package com.example.team12bof;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.view.View;
 import com.example.team12bof.db.AppDatabase;
 import com.example.team12bof.db.Course;
 import com.example.team12bof.db.CoursesDao;
+import com.example.team12bof.db.Item;
 import com.example.team12bof.db.Student;
 import com.google.android.gms.nearby.messages.Message;
 import com.google.android.gms.nearby.messages.MessageListener;
@@ -27,6 +29,7 @@ import java.util.List;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -49,6 +52,7 @@ public class ClassmateActivity extends AppCompatActivity implements AdapterView.
     private HashSet<String> alreadySeen;
     private Spinner filter;
     private ArrayAdapter<CharSequence> adapter_filter;
+    public static List<Student> listOfStudentsSession;
 
 
 
@@ -133,13 +137,49 @@ public class ClassmateActivity extends AppCompatActivity implements AdapterView.
             editor.putBoolean("startmode", true);
             editor.apply();
             realListener.getMessage();
+            listOfStudentsSession = new ArrayList<>();
+
         } else {
+            listOfStudentsSession.clear();
+            AlertDialog.Builder bd = new AlertDialog.Builder(this);
+            bd.setMessage("Do you want to save this session?");
+            bd.setPositiveButton("Yes", (dialog, id) -> {
+                dialog.cancel();
+                AlertDialog.Builder sbd = new AlertDialog.Builder(this);
+                EditText input = new EditText(this);
+                sbd.setTitle("Session name");
+                sbd.setView(input);
+                sbd.setMessage("Please enter the name of the session");
+                sbd.setPositiveButton("Save", (dialog1, id1) -> {
+
+                    Item s = new Item(input.getText().toString());
+                    db.itemDao().insertItem(s);
+                    dialog1.cancel();
+                    for (Student sm : (db.studentDao().getAll())){
+                        listOfStudentsSession.add(sm);
+                    }
+
+
+                });
+                sbd.setCancelable(true);
+                AlertDialog ad = sbd.create();
+                ad.show();
+
+            });
+            bd.setNegativeButton("No",(dialog, id) ->{
+                dialog.cancel();
+            });
+            bd.setCancelable(true);
+            AlertDialog alertDialog = bd.create();
+            alertDialog.show();
             startbutMode = 0;
             startButton.setText("Start");
             Nearby.getMessagesClient(this).unsubscribe(myMessageListener);
             //Nearby.getMessagesClient(this).unpublish(myMessage);
             editor.putBoolean("startmode", false);
             editor.apply();
+
+
         }
     }
 
@@ -263,6 +303,10 @@ public class ClassmateActivity extends AppCompatActivity implements AdapterView.
         startActivity(ins);
     }
 
+    public void onSavedClicked(View view){
+        Intent in3 = new Intent(this, savedSessionActivity.class);
+        startActivity(in3);
+    }
 }
 
 

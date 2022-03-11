@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Team12BOF">
         <activity
+            android:name=".sessionStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sessionCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".savedSessionActivity"
+            android:exported="false" />
+        <activity
             android:name=".MockedMessageActivity"
             android:exported="false" />
 
