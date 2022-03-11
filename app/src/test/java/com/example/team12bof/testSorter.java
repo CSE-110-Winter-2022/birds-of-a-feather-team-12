@@ -42,7 +42,7 @@ public class testSorter {
 
     @Test
     public void testThisQtrOnlySort(){
-        Student testStudent1 = new Student("testStudent1");
+        Student testStudent1 = new Student("testStudent1","");
         Context context = ApplicationProvider.getApplicationContext();
         AppDatabase.useTestSingleton(context);
         AppDatabase db = AppDatabase.singleton(context);
@@ -52,7 +52,7 @@ public class testSorter {
         int studentId = db.studentDao().getAll().get(db.studentDao().getAll().size()-1).getStudentId();
         Course testCourse = new Course(studentId, "110","CSE","2022","Winter","Large(150-250)");
         db.coursesDao().insert(testCourse);
-        Student testStudent2 = new Student("testStudent2");
+        Student testStudent2 = new Student("testStudent2","");
         db.studentDao().insert(testStudent2);
         studentId = db.studentDao().getAll().get(db.studentDao().getAll().size()-1).getStudentId();
         Course testCourse1 = new Course(studentId, "100","CSE","2021","Fall","Tiny (less than 40)");
@@ -71,7 +71,7 @@ public class testSorter {
     }
     @Test
     public void testSmallSort(){
-        Student testStudent1 = new Student("testStudent1");
+        Student testStudent1 = new Student("testStudent1","");
         Context context = ApplicationProvider.getApplicationContext();
         AppDatabase.useTestSingleton(context);
         AppDatabase db = AppDatabase.singleton(context);
@@ -81,7 +81,7 @@ public class testSorter {
         int studentId = db.studentDao().getAll().get(db.studentDao().getAll().size()-1).getStudentId();
         Course testCourse = new Course(studentId, "110","CSE","2022","Winter","Large(150-250)");
         db.coursesDao().insert(testCourse);
-        Student testStudent2 = new Student("testStudent2");
+        Student testStudent2 = new Student("testStudent2","");
         db.studentDao().insert(testStudent2);
         studentId = db.studentDao().getAll().get(db.studentDao().getAll().size()-1).getStudentId();
         Course testCourse1 = new Course(studentId, "100","CSE","2021","Fall","Tiny (less than 40)");
@@ -101,7 +101,7 @@ public class testSorter {
     }
     @Test
     public void testRecentSort(){
-        Student testStudent1 = new Student("testStudent1");
+        Student testStudent1 = new Student("testStudent1","");
         Context context = ApplicationProvider.getApplicationContext();
         AppDatabase.useTestSingleton(context);
         AppDatabase db = AppDatabase.singleton(context);
@@ -111,7 +111,7 @@ public class testSorter {
         int studentId = db.studentDao().getAll().get(db.studentDao().getAll().size()-1).getStudentId();
         Course testCourse = new Course(studentId, "110","CSE","2022","Winter","Large(150-250)");
         db.coursesDao().insert(testCourse);
-        Student testStudent2 = new Student("testStudent2");
+        Student testStudent2 = new Student("testStudent2","");
         db.studentDao().insert(testStudent2);
         studentId = db.studentDao().getAll().get(db.studentDao().getAll().size()-1).getStudentId();
         Course testCourse1 = new Course(studentId, "100","CSE","2021","Fall","Tiny (less than 40)");

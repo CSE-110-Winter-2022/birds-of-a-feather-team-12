@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.team12bof.db.Course;
+import com.bumptech.glide.Glide;
 import com.example.team12bof.db.Student;
 
 import java.util.List;
@@ -48,17 +49,21 @@ public class ClassmateViewAdapter extends RecyclerView.Adapter<ClassmateViewAdap
             extends RecyclerView.ViewHolder
             implements View.OnClickListener {
         private final TextView classmateNameView;
+        private final ImageView URL;
         private Student classmate;
 
         ViewHolder(View itemView) {
             super(itemView);
             this.classmateNameView = itemView.findViewById(R.id.classmate_row_name);
+            this.URL = itemView.findViewById(R.id.URL);
             itemView.setOnClickListener(this);
         }
 
         public void setClassmate(Student classmate) {
             this.classmate = classmate;
             this.classmateNameView.setText(classmate.getName());
+
+            Glide.with(itemView).load(this.classmate.getURL()).into(URL);
         }
 
         @Override
