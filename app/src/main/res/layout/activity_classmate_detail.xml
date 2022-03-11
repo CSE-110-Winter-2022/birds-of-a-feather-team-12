@@ -38,7 +38,7 @@
         style="@style/toggleButton"
         android:background="@drawable/ic_toggle_bg"
         android:textSize="0sp"
-
+        android:onClick="onToggle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/go_back_button"
         app:layout_constraintStart_toStartOf="parent"

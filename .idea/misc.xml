@@ -6,9 +6,19 @@
         <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/drawable/ic_toggle.xml" value="0.1" />
         <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/drawable/ic_toggle_bg.xml" value="0.1" />
         <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_classmate.xml" value="0.12545289855072464" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_classmate_detail.xml" value="0.12545289855072464" />
         <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_main.xml" value="0.12545289855072464" />
         <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_mock_screen.xml" value="0.12545289855072464" />
         <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_mocked_message.xml" value="0.12545289855072464" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_saved_session.xml" value="0.12545289855072464" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_saved_sessions.xml" value="0.1" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_session_course.xml" value="0.10960144927536232" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_session_student.xml" value="0.1" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/classmate_row.xml" value="0.12545289855072464" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/courses_row.xml" value="0.12545289855072464" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/coursesession_row.xml" value="0.10960144927536232" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/item_row.xml" value="0.12545289855072464" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/sessionstudent_row.xml" value="0.1" />
         <entry key="..\:/Users/ITX/StudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/activity_add_class.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/ITX/StudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/activity_classmate.xml" value="0.1933876811594203" />
         <entry key="..\:/Users/ITX/StudioProjects/birds-of-a-feather-team-12/app/src/main/res/layout/activity_classmate_detail.xml" value="0.1933876811594203" />

@@ -11,7 +11,7 @@ import androidx.room.RoomDatabase;
  * write to data base or read from it by getting
  * inherited from RoomDatabase
  */
-@Database(entities = {Student.class, Course.class}, version =1)
+@Database(entities = {Student.class, Course.class, Item.class}, version =1)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase singletonInstance;
 
@@ -44,6 +44,9 @@ public abstract class AppDatabase extends RoomDatabase {
      * @return CoursesDao
      */
     public abstract CoursesDao coursesDao();
+
+    public abstract ItemDao itemDao();
+
 
 
 }

@@ -1,6 +1,7 @@
 package com.example.team12bof;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,20 +13,21 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.team12bof.db.AppDatabase;
+
 import com.example.team12bof.db.Course;
-import com.example.team12bof.db.CoursesDao;
+import com.example.team12bof.db.Item;
 import com.example.team12bof.db.Student;
+
 import com.google.android.gms.nearby.messages.Message;
 import com.google.android.gms.nearby.messages.MessageListener;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import java.util.HashSet;
 import java.util.List;
 
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 
 
 import com.google.android.gms.nearby.Nearby;
@@ -44,6 +46,7 @@ public class ClassmateActivity extends AppCompatActivity {
     private FakedMessageListener realListener;
     private static final String TAG = "team12bof";
     private HashSet<String> alreadySeen;
+    public static List<Student> listOfStudentsSession;
 
 
 
@@ -61,6 +64,7 @@ public class ClassmateActivity extends AppCompatActivity {
         alreadySeen = new HashSet<>();
 
         db = AppDatabase.singleton(this);
+
         List<Student> classmates = db.studentDao().getAll();
         List<Course> myownCourses = db.coursesDao().getForStudent(0);
         UserCourses = new HashSet<>();
@@ -119,7 +123,41 @@ public class ClassmateActivity extends AppCompatActivity {
             editor.putBoolean("startmode", true);
             editor.apply();
             realListener.getMessage();
+            listOfStudentsSession = new ArrayList<>();
+
         } else {
+
+            AlertDialog.Builder bd = new AlertDialog.Builder(this);
+            bd.setMessage("Do you want to save this session?");
+            bd.setPositiveButton("Yes", (dialog, id) -> {
+                dialog.cancel();
+                AlertDialog.Builder sbd = new AlertDialog.Builder(this);
+                EditText input = new EditText(this);
+                sbd.setTitle("Session name");
+                sbd.setView(input);
+                sbd.setMessage("Please enter the name of the session");
+                sbd.setPositiveButton("Save", (dialog1, id1) -> {
+
+                      Item s = new Item(input.getText().toString());
+                      db.itemDao().insertItem(s);
+                      dialog1.cancel();
+                      for (Student sm : (db.studentDao().getAll())){
+                          listOfStudentsSession.add(sm);
+                      }
+
+
+                });
+                sbd.setCancelable(true);
+                AlertDialog ad = sbd.create();
+                ad.show();
+
+            });
+            bd.setNegativeButton("No",(dialog, id) ->{
+                dialog.cancel();
+            });
+            bd.setCancelable(true);
+            AlertDialog alertDialog = bd.create();
+            alertDialog.show();
             startbutMode = 0;
             startButton.setText("Start");
             Nearby.getMessagesClient(this).unsubscribe(myMessageListener);
@@ -208,6 +246,10 @@ public class ClassmateActivity extends AppCompatActivity {
     public void onFinishClicked(View view){
         Intent ins = new Intent(this,MainActivity.class);
         startActivity(ins);
+    }
+    public void onSavedClicked(View view){
+        Intent in3 = new Intent(this, savedSessionActivity.class);
+        startActivity(in3);
     }
 
 }

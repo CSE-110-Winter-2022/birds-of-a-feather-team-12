@@ -1,7 +1,11 @@
 package com.example.team12bof;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.SharedPreferences;
+import android.widget.EditText;
 
 import java.util.Optional;
 
@@ -10,6 +14,8 @@ import java.util.Optional;
  * input is invalid
  */
 public class Utilities {
+
+
     /**
      * This method pops up a window
      * to show the alert message
@@ -45,4 +51,47 @@ public class Utilities {
             return Optional.empty();
         }
     }
+
+    /*public static void showAlert2(Activity activity,String message){
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(activity);
+
+
+        alertBuilder
+
+                .setMessage(message)
+                .setPositiveButton("Yes",(dialog, id) -> {
+                    dialog.cancel();
+                    show3(activity);
+                })
+                .setNegativeButton("No",(dialog, id) ->{
+                    dialog.cancel();
+                })
+
+                .setCancelable(true);
+
+        AlertDialog alertDialog = alertBuilder.create();
+        alertDialog.show();
+    }
+
+    public static void show3(Activity activity){
+       EditText input = new EditText(activity);
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(activity);
+
+        alertBuilder
+                .setTitle("Session name")
+                .setMessage("Please enter the name of the session")
+                .setView(input)
+                .setPositiveButton("Save",(dialog, id) -> {
+                    dialog.cancel();
+                    String myuniq = input.getText().toString();
+
+
+                })
+         .setCancelable(true);
+
+
+        AlertDialog alertDialog = alertBuilder.create();
+        alertDialog.show();
+
+    }*/
 }

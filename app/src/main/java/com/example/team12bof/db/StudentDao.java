@@ -21,4 +21,5 @@ public interface StudentDao {
 
     @Delete
     void delete(Student Student);
+
 }
