@@ -30,6 +30,12 @@ public abstract class AppDatabase extends RoomDatabase {
         }
         return singletonInstance;
     }
+    public static void useTestSingleton(Context context) {
+        singletonInstance = Room.inMemoryDatabaseBuilder(context, AppDatabase.class)
+                .allowMainThreadQueries()
+                .build();
+        //return singletonInstance;
+    }
 
     /**
      * This method will return a Dao test for StrudentWithCourses class

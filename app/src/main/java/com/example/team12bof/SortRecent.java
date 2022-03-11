@@ -88,7 +88,7 @@ public class SortRecent implements Sorter {
         int score = 5;
         String prevQtr = "";
         for (int i=index;i<l.size()+index+2;i++) {
-            currIdx = l.size()%i;
+            currIdx = i%l.size();
             if(i > index + 2){
                 score -= 1;
             }
