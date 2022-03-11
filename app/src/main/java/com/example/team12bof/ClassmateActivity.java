@@ -155,25 +155,33 @@ public class ClassmateActivity extends AppCompatActivity implements AdapterView.
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         Sorter sorter;
         String selectedItem =  adapterView.getItemAtPosition(i).toString();
-        if(selectedItem.equals( "Prioritize recent")){
-            sorter = new SortRecent();
-            List<Student> classmates = sorter.sort(db,AddClassActivity.user_courses,"Winter","2022");
-            classmateViewAdapter = new ClassmateViewAdapter(classmates);
+        if(AddClassActivity.user_courses == null) {
+            List<Student> empty = new ArrayList<Student>();
+            classmateViewAdapter = new ClassmateViewAdapter(empty);
             classmateRecyclerView.setAdapter(classmateViewAdapter);
 
         }
-        if(selectedItem.equals( "Prioritize small classes")){
-            sorter = new SortSmall();
-            List<Student> classmates = sorter.sort(db,AddClassActivity.user_courses,"Winter","2022");
-            classmateViewAdapter = new ClassmateViewAdapter(classmates);
-            classmateRecyclerView.setAdapter(classmateViewAdapter);
-        }
-        if(selectedItem.equals( "This quarter only")){
-            sorter = new SortQuarterOnly();
-            List<Student> classmates = sorter.sort(db,AddClassActivity.user_courses,"Winter","2022");
-            classmateViewAdapter = new ClassmateViewAdapter(classmates);
-            classmateRecyclerView.setAdapter(classmateViewAdapter);
+        else {
+            if (selectedItem.equals("Prioritize recent")) {
+                sorter = new SortRecent();
+                List<Student> classmates = sorter.sort(db, AddClassActivity.user_courses, "Winter", "2022");
+                classmateViewAdapter = new ClassmateViewAdapter(classmates);
+                classmateRecyclerView.setAdapter(classmateViewAdapter);
 
+            }
+            if (selectedItem.equals("Prioritize small classes")) {
+                sorter = new SortSmall();
+                List<Student> classmates = sorter.sort(db, AddClassActivity.user_courses, "Winter", "2022");
+                classmateViewAdapter = new ClassmateViewAdapter(classmates);
+                classmateRecyclerView.setAdapter(classmateViewAdapter);
+            }
+            if (selectedItem.equals("This quarter only")) {
+                sorter = new SortQuarterOnly();
+                List<Student> classmates = sorter.sort(db, AddClassActivity.user_courses, "Winter", "2022");
+                classmateViewAdapter = new ClassmateViewAdapter(classmates);
+                classmateRecyclerView.setAdapter(classmateViewAdapter);
+
+            }
         }
     }
 
