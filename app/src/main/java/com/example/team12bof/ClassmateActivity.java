@@ -255,7 +255,7 @@ public class ClassmateActivity extends AppCompatActivity implements AdapterView.
 
                 String[] courses = data[2].split("/");
 
-                Student newStudent = new Student(studentName);
+                Student newStudent = new Student(studentName, photoUrl);
                 db.studentDao().insert(newStudent);
                 int studentId = db.studentDao().getAll().get(db.studentDao().getAll().size()-1).getStudentId();
 
@@ -287,8 +287,6 @@ public class ClassmateActivity extends AppCompatActivity implements AdapterView.
 
 
                 List<Student> classmates = db.studentDao().getAll();
-                Sorter sorter = new SortQuarterOnly();
-                sorter.sort(db,AddClassActivity.user_courses,"Winter","2022");
                 classmateViewAdapter = new ClassmateViewAdapter(classmates);
                 classmateRecyclerView.setAdapter(classmateViewAdapter);
             }
