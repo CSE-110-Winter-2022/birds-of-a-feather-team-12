@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/drawable/ic_toggle.xml" value="0.1" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/drawable/ic_toggle2.xml" value="0.1" />
         <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/drawable/ic_toggle_bg.xml" value="0.1" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/drawable/ic_toggle_bg2.xml" value="0.1" />
         <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_classmate.xml" value="0.12545289855072464" />
+        <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_classmate_detail.xml" value="0.12545289855072464" />
         <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_main.xml" value="0.12545289855072464" />
         <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_mock_screen.xml" value="0.12545289855072464" />
         <entry key="..\:/Downloads/Projects110/birds-of-a-feather-team-12/app/src/main/res/layout/activity_mocked_message.xml" value="0.12545289855072464" />

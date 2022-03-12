@@ -5,6 +5,6 @@
         android:drawable="@android:color/transparent" />
 
     <item android:id="@android:id/toggle"
-        android:drawable="@drawable/ic_toggle" />
+        android:drawable="@drawable/ic_toggle2" />
 
 </layer-list>
