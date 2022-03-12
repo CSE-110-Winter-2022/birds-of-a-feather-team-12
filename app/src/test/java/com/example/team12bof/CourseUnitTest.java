@@ -21,7 +21,7 @@ import com.example.team12bof.db.Course;
  */
 
 @RunWith(JUnit4.class)
-public class ExampleUnitTest {
+public class CourseUnitTest {
 
     @Test
     public void testCourseNumber() {
